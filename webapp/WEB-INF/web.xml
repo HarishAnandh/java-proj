@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>SATARK - Disaster Management &amp; Early Warning System</display-name>
+    <description>SATARK: Integrated Disaster Response, Preparedness Drills &amp; Early Warning Portal</description>
+
+    <!-- Welcome file -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- ============================================== -->
+    <!--  UserServlet Configuration (SATARK)            -->
+    <!--  Handles: login, register, profile, leaderboard-->
+    <!--  Powered by Hibernate ORM with JDBC fallback   -->
+    <!-- ============================================== -->
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.satark.servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+
+    <!-- ============================================== -->
+    <!--  GameServlet Configuration (SATARK Drills)     -->
+    <!--  Handles: quiz data, score updates             -->
+    <!--  Powered by Hibernate ORM with JDBC fallback   -->
+    <!-- ============================================== -->
+    <servlet>
+        <servlet-name>GameServlet</servlet-name>
+        <servlet-class>com.satark.servlet.GameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GameServlet</servlet-name>
+        <url-pattern>/game</url-pattern>
+    </servlet-mapping>
+
+</web-app>
