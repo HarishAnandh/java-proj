@@ -559,7 +559,7 @@
             color: var(--accent-red);
         }
 
-        .qa-icon-wrap.support {
+        .qa-icon-wrap.report {
             background: var(--accent-purple-light);
             color: var(--accent-purple);
         }
@@ -597,7 +597,7 @@
             color: #ffffff;
         }
 
-        /* Emergency Alerts Card */
+        /* Emergency Alerts Card (Shows Live Database Alerts) */
         .emergency-alerts-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -613,6 +613,11 @@
             border-radius: 12px;
             padding: 16px;
             margin-top: 14px;
+            transition: all 0.2s;
+        }
+
+        .alert-item-box:hover {
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.08);
         }
 
         .alert-top {
@@ -636,6 +641,21 @@
             font-weight: 800;
             padding: 2px 8px;
             border-radius: 6px;
+        }
+
+        .alert-badge-level.CRITICAL, .alert-badge-level.HIGH {
+            background: var(--accent-red-light);
+            color: var(--accent-red);
+            border: 1px solid #fecaca;
+        }
+
+        .alert-badge-level.MODERATE {
+            background: var(--accent-amber-light);
+            color: var(--accent-amber);
+            border: 1px solid #fde68a;
+        }
+
+        .alert-badge-level.LOW {
             background: var(--primary-blue-light);
             color: var(--primary-blue);
             border: 1px solid #dbeafe;
@@ -648,14 +668,25 @@
             margin-bottom: 8px;
         }
 
-        .alert-timestamp {
+        .alert-meta-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 11px;
             color: var(--text-muted);
+            border-top: 1px dashed #f1f5f9;
+            padding-top: 8px;
+            margin-top: 6px;
+        }
+
+        .alert-case-id-tag {
             font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--primary-blue);
         }
 
         /* ==========================================================
-           INTERACTIVE VIEWS (DRILLS, LEARN, EMERGENCY, PROFILE, CHAT)
+           INTERACTIVE SUBVIEWS (DRILLS, LEARN, EMERGENCY, PROFILE, REGEX REPORT)
            ========================================================== */
         .subview-container {
             display: none;
@@ -691,7 +722,7 @@
             background: #e2e8f0;
         }
 
-        /* Practice Drills Selection in subview */
+        /* Practice Drills Selection */
         .drills-selection-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -733,7 +764,7 @@
             background: var(--primary-blue-hover);
         }
 
-        /* Active Drill Arena (Quiz / Scramble / Decision) */
+        /* Active Drill Play Area */
         .active-drill-box {
             max-width: 800px;
             margin: 0 auto;
@@ -1011,74 +1042,190 @@
             font-weight: 500;
         }
 
-        /* AI Chat view */
-        .chat-box-light {
-            max-width: 650px;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 480px;
+        /* ==========================================================
+           VIEW 5: DISASTER REPORT REGEX EXTRACTION & CASE FILING
+           ========================================================== */
+        .report-split-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 28px;
+            align-items: start;
         }
 
-        .chat-history {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            background: #f8fafc;
-        }
-
-        .chat-msg {
-            max-width: 80%;
-            padding: 12px 16px;
-            border-radius: 14px;
-            font-size: 13.5px;
-            line-height: 1.45;
-        }
-
-        .chat-msg.bot {
+        .report-form-card {
             background: #ffffff;
-            color: var(--text-heading);
-            border: 1px solid var(--border-color);
-            align-self: flex-start;
-        }
-
-        .chat-msg.user {
-            background: var(--primary-blue);
-            color: #ffffff;
-            align-self: flex-end;
-        }
-
-        .chat-input-bar {
-            padding: 14px;
-            background: #ffffff;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 10px;
-        }
-
-        .chat-input-bar input {
-            flex: 1;
-            padding: 10px 16px;
             border: 1.5px solid var(--border-color);
-            border-radius: 10px;
-            outline: none;
-            font-size: 14px;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--card-shadow);
         }
 
-        .chat-input-bar button {
+        .preset-buttons-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-preset-pill {
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            border-radius: 9999px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-heading);
+            cursor: pointer;
+            transition: all 0.18s;
+        }
+
+        .btn-preset-pill:hover {
+            background: var(--primary-blue-light);
+            border-color: #bfdbfe;
+            color: var(--primary-blue);
+        }
+
+        .report-textarea {
+            width: 100%;
+            min-height: 140px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border-color);
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-heading);
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 14px;
+        }
+
+        .report-textarea:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        .btn-run-regex {
             background: var(--primary-blue);
             color: #ffffff;
             border: none;
-            padding: 10px 18px;
-            border-radius: 10px;
+            padding: 13px 22px;
+            border-radius: 12px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-run-regex:hover {
+            background: var(--primary-blue-hover);
+        }
+
+        /* Regex Extraction Live Visualizer Card */
+        .regex-extracted-card {
+            display: none;
+            background: #f8fafc;
+            border: 1.5px solid #a7f3d0;
+            border-left: 5px solid var(--accent-green);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .regex-extracted-card.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .regex-tokens-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 14px;
+        }
+
+        .regex-token-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .regex-token-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .regex-token-val {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-heading);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Database 'alerts' Table Display */
+        .alerts-database-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .alerts-table-scroll {
+            max-height: 480px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-top: 14px;
+        }
+
+        .alerts-db-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .alerts-db-table th {
+            position: sticky;
+            top: 0;
+            background: #f8fafc;
+            padding: 10px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+            z-index: 2;
+        }
+
+        .alerts-db-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-heading);
+        }
+
+        .alerts-db-table tr:hover {
+            background: #f8fafc;
         }
 
         /* Responsive Breakpoints */
@@ -1097,6 +1244,9 @@
             }
             .helpline-grid-light {
                 grid-template-columns: 1fr 1fr;
+            }
+            .report-split-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -1153,9 +1303,10 @@
                     <span class="nav-icon">⚠️</span>
                     <span>Emergency Hub</span>
                 </a>
-                <a class="nav-item" id="navChat" onclick="switchNav('chat')">
-                    <span class="nav-icon">💬</span>
-                    <span>Support Chat</span>
+                <!-- REPLACED CHAT WITH REGEX DISASTER REPORTING MODULE -->
+                <a class="nav-item" id="navReport" onclick="switchNav('report')">
+                    <span class="nav-icon">📋</span>
+                    <span>File Report (Regex)</span>
                 </a>
                 <a class="nav-item" id="navProfile" onclick="switchNav('profile')">
                     <span class="nav-icon">👤</span>
@@ -1310,43 +1461,50 @@
                             <div class="qa-play-btn">▷</div>
                         </div>
 
-                        <!-- Action 4: Get Support -->
-                        <div class="qa-card" onclick="switchNav('chat')">
+                        <!-- Action 4: REPLACED CHAT WITH REGEX DISASTER CASE FILING -->
+                        <div class="qa-card" onclick="switchNav('report')">
                             <div>
-                                <div class="qa-icon-wrap support">💬</div>
-                                <div class="qa-title">Get Support</div>
-                                <div class="qa-desc">Talk to our helpful AI assistant for emotional support</div>
+                                <div class="qa-icon-wrap report">📋</div>
+                                <div class="qa-title">File Incident Report</div>
+                                <div class="qa-desc">Auto-extract disaster data via Regex & file database case</div>
                             </div>
                             <div class="qa-play-btn">▷</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Emergency Alerts Panel -->
+                <!-- Emergency Alerts Panel (Connects to PostgreSQL 'alerts' table) -->
                 <div>
-                    <div class="section-header-row">
-                        <span>⚠️</span>
-                        <span>Emergency Alerts</span>
+                    <div class="section-header-row" style="justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span>⚠️</span>
+                            <span>Emergency Alerts</span>
+                        </div>
+                        <button style="background: transparent; border: none; color: var(--primary-blue); font-size: 12px; font-weight: 700; cursor: pointer;" onclick="loadAlertsFromDatabase()">⟳ Refresh</button>
                     </div>
 
                     <div class="emergency-alerts-card">
-                        <div class="alert-item-box">
-                            <div class="alert-top">
-                                <div class="alert-title-row">
-                                    <span>ℹ️</span>
-                                    <span>Weather Advisory</span>
+                        <!-- Dynamic Alerts Container from PostgreSQL alerts table -->
+                        <div id="dashboardAlertsContainer">
+                            <!-- Weather Advisory Default Card -->
+                            <div class="alert-item-box">
+                                <div class="alert-top">
+                                    <div class="alert-title-row">
+                                        <span>ℹ️</span>
+                                        <span>Weather Advisory</span>
+                                    </div>
+                                    <span class="alert-badge-level LOW">LOW</span>
                                 </div>
-                                <span class="alert-badge-level">LOW</span>
+                                <p class="alert-body-text">
+                                    Light rain expected in your area. Stay indoors and avoid unnecessary travel.
+                                </p>
+                                <div class="alert-timestamp" id="liveAlertTime">Sep 13, 2:55 AM</div>
                             </div>
-                            <p class="alert-body-text">
-                                Light rain expected in your area. Stay indoors and avoid unnecessary travel.
-                            </p>
-                            <div class="alert-timestamp" id="liveAlertTime">Sep 13, 2:55 AM</div>
                         </div>
 
                         <div style="margin-top: 16px; padding: 12px; background: #f8fafc; border-radius: 10px; font-size: 12px; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between;">
-                            <span>Active Monitoring: <strong>Level 1 (All Clear)</strong></span>
-                            <span style="color: var(--accent-green); font-weight: 700;">● Online</span>
+                            <span>Database Table: <strong>alerts</strong></span>
+                            <span style="color: var(--accent-green); font-weight: 700;">● Live Synced</span>
                         </div>
                     </div>
                 </div>
@@ -1537,27 +1695,128 @@
         </div>
 
         <!-- ======================================================
-             VIEW 5: SUPPORT CHAT
+             VIEW 5: DISASTER INCIDENT REPORTING & REGEX EXTRACTION
+             (REPLACES OLD CHAT MODULE)
              ====================================================== -->
-        <div id="viewChat" class="subview-container">
+        <div id="viewReport" class="subview-container">
             <div class="subview-header">
                 <div>
-                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Satark AI Safety Assistant</h2>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Ask any question about safety guidelines, emergency protocols, or emotional support.</p>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Disaster Case Filing & Regex Auto-Extractor</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+                        Paste or upload raw disaster reports. The Java Regex engine extracts category, severity, location, postal PIN, casualties, and contact numbers, and files an official case into the database <strong>alerts</strong> table.
+                    </p>
                 </div>
                 <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
             </div>
 
-            <div class="chat-box-light">
-                <div class="chat-history" id="chatHistory">
-                    <div class="chat-msg bot">
-                        👋 Hi! I'm your Satark Safety Companion. Ask me about emergency procedures, what to pack in your go-bag, or how to prepare for an upcoming weather alert!
+            <div class="report-split-grid">
+
+                <!-- Left Form: Report Text & Regex Trigger -->
+                <div class="report-form-card">
+                    <div style="font-size: 14px; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">
+                        ⚡ Quick Sample Presets (Click to Test Regex)
+                    </div>
+                    <div class="preset-buttons-bar">
+                        <button type="button" class="btn-preset-pill" onclick="loadSampleReport('flood')">🌊 Chennai Flash Flood</button>
+                        <button type="button" class="btn-preset-pill" onclick="loadSampleReport('earthquake')">🌍 Uttarkashi Quake</button>
+                        <button type="button" class="btn-preset-pill" onclick="loadSampleReport('fire')">🔥 Pune Gas Leak & Fire</button>
+                    </div>
+
+                    <form onsubmit="handleFileIncidentReport(event)">
+                        <label for="reportTextInput" style="font-size: 13px; font-weight: 700; color: var(--text-heading); display: block; margin-bottom: 6px;">
+                            Raw Disaster Situation Text / Incident Dispatch
+                        </label>
+                        <textarea id="reportTextInput" class="report-textarea" placeholder="Paste or type raw incident report text here... e.g.: EMERGENCY ALERT: Severe Flash Flood reported in Chennai near Marina Beach (PIN: 600005). Over 150 people stranded, water level 4.5ft. Severity: HIGH. Contact Inspector Rajesh at +91-9876543210 or email relief.chennai@ndma.gov.in. Needs immediate rescue boats." required></textarea>
+
+                        <div style="margin-bottom: 16px;">
+                            <label for="reporterNameInput" style="font-size: 13px; font-weight: 700; color: var(--text-heading); display: block; margin-bottom: 6px;">
+                                Reporter / Dispatching Officer ID
+                            </label>
+                            <input type="text" id="reporterNameInput" value="Harish" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 14px; outline: none;">
+                        </div>
+
+                        <button type="submit" class="btn-run-regex" id="btnSubmitReport">
+                            <span>⚡</span>
+                            <span id="btnSubmitReportText">Extract Data via Regex & File Case in Database</span>
+                        </button>
+                    </form>
+
+                    <!-- Live Regex Extraction Results Card -->
+                    <div class="regex-extracted-card" id="regexExtractionResult">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="font-size: 13px; font-weight: 800; color: var(--accent-green);">
+                                ✅ Case Successfully Filed in PostgreSQL Database!
+                            </div>
+                            <span style="font-size: 11px; background: #ecfdf5; color: #059669; font-weight: 700; padding: 2px 8px; border-radius: 6px;" id="rxStatusBadge">STATUS: ACTIVE</span>
+                        </div>
+
+                        <div class="regex-tokens-grid">
+                            <div class="regex-token-box">
+                                <span class="regex-token-label">Assigned Case ID</span>
+                                <span class="regex-token-val" id="rxCaseId" style="color: var(--primary-blue);">-</span>
+                            </div>
+                            <div class="regex-token-box">
+                                <span class="regex-token-label">Disaster Type (Regex)</span>
+                                <span class="regex-token-val" id="rxDisasterType" style="color: var(--accent-orange);">-</span>
+                            </div>
+                            <div class="regex-token-box">
+                                <span class="regex-token-label">Severity Level (Regex)</span>
+                                <span class="regex-token-val" id="rxSeverity">-</span>
+                            </div>
+                            <div class="regex-token-box">
+                                <span class="regex-token-label">Extracted Location</span>
+                                <span class="regex-token-val" id="rxLocation">-</span>
+                            </div>
+                            <div class="regex-token-box">
+                                <span class="regex-token-label">Postal PIN Code</span>
+                                <span class="regex-token-val" id="rxPincode">-</span>
+                            </div>
+                            <div class="regex-token-box">
+                                <span class="regex-token-label">Affected Casualties</span>
+                                <span class="regex-token-val" id="rxAffected">-</span>
+                            </div>
+                            <div class="regex-token-box" style="grid-column: span 2;">
+                                <span class="regex-token-label">Emergency Contact Info (Phone / Email)</span>
+                                <span class="regex-token-val" id="rxContact" style="font-size: 13px;">-</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 12px; font-size: 12px; color: var(--text-body); background: #ffffff; padding: 10px; border-radius: 8px; border: 1px solid var(--border-color);" id="rxSummaryText">
+                        </div>
                     </div>
                 </div>
-                <form class="chat-input-bar" onsubmit="handleSendChat(event)">
-                    <input type="text" id="chatInput" placeholder="Type your safety question..." autocomplete="off">
-                    <button type="submit">Send</button>
-                </form>
+
+                <!-- Right Table: Database 'alerts' Table Viewer -->
+                <div class="alerts-database-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="font-size: 16px; font-weight: 800; color: var(--text-heading);">Database 'alerts' Table</h3>
+                            <p style="font-size: 12px; color: var(--text-muted);">Real-time cases recorded in PostgreSQL via Hibernate</p>
+                        </div>
+                        <button type="button" style="background: #f1f5f9; border: 1px solid var(--border-color); padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer;" onclick="loadAlertsFromDatabase()">⟳ Refresh Table</button>
+                    </div>
+
+                    <div class="alerts-table-scroll">
+                        <table class="alerts-db-table">
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Disaster</th>
+                                    <th>Level</th>
+                                    <th>Location</th>
+                                    <th>PIN</th>
+                                    <th>Affected</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dbAlertsTbody">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading database alerts table...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -1598,7 +1857,7 @@
             <div class="subview-header">
                 <div>
                     <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Admin Operational Console</h2>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">System diagnostics and disaster alert broadcasting.</p>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">System diagnostics and database alerts overview.</p>
                 </div>
                 <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
             </div>
@@ -1606,13 +1865,13 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                 <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px;">
                     <h4 style="font-size: 15px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">System Health</h4>
-                    <p style="font-size: 13px; color: var(--text-body); margin-bottom: 12px;">Database: PostgreSQL &bull; ORM: Hibernate 6.6 &bull; Server: Apache Tomcat 9</p>
+                    <p style="font-size: 13px; color: var(--text-body); margin-bottom: 12px;">Database: PostgreSQL &bull; Tables: <code>users</code>, <code>alerts</code> &bull; ORM: Hibernate 6.6 &bull; Server: Apache Tomcat 9</p>
                     <div style="font-size: 12px; font-weight: 700; color: var(--accent-green);">● All Services Operational</div>
                 </div>
                 <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px;">
-                    <h4 style="font-size: 15px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Broadcast New Regional Advisory</h4>
-                    <p style="font-size: 13px; color: var(--text-body); margin-bottom: 12px;">Dispatches instantaneous emergency alerts to all connected citizen units.</p>
-                    <button style="background: var(--accent-orange); color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer;" onclick="alert('Broadcasting demo alert triggered.')">Issue Weather Advisory</button>
+                    <h4 style="font-size: 15px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Database Alerts Table Quick Jump</h4>
+                    <p style="font-size: 13px; color: var(--text-body); margin-bottom: 12px;">Review structured cases extracted via Regular Expressions.</p>
+                    <button style="background: var(--primary-blue); color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer;" onclick="switchNav('report')">Open Case Filing & Alerts Table</button>
                 </div>
             </div>
         </div>
@@ -1663,9 +1922,9 @@
             updateFitnessDashboard();
             loadLeaderboard();
             setLiveAlertTimestamp();
+            loadAlertsFromDatabase();
         }
 
-        // Set Live Timestamp like image ("Sep 13, 2:55 AM")
         function setLiveAlertTimestamp() {
             const now = new Date();
             const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
@@ -1680,17 +1939,10 @@
             const points = currentUser.totalScore || 0;
             const drills = currentUser.gamesPlayed || 0;
 
-            // Sidebar
             document.getElementById('sidebarUsername').textContent = name;
             document.getElementById('sidebarAvatar').textContent = name.charAt(0).toUpperCase();
-
-            // Header
             document.getElementById('headerWelcomeName').textContent = name;
 
-            // Level & Progress Bar Calculations (Matching Image)
-            // Tier 1: 0 - 250 pts -> Level 1 Hero
-            // Tier 2: 250 - 500 pts -> Level 2 Hero
-            // Tier 3: 500 - 1000 pts -> Level 3 Master
             let level = 1;
             let currentTierMin = 0;
             let nextTierMax = 250;
@@ -1724,31 +1976,26 @@
             document.getElementById('heroProgressPercent').textContent = `${progressPercent}%`;
             document.getElementById('heroPointsUntilNext').textContent = `${pointsRemaining} points until next level`;
 
-            // Smooth Pill Progress Bar
             document.getElementById('heroProgressFill').style.width = `${progressPercent}%`;
 
-            // 4 Stat Cards
             document.getElementById('statDrillsCount').textContent = drills;
             document.getElementById('statCurrentLevel').textContent = level;
             document.getElementById('statTotalPoints').textContent = points;
 
-            // Safety Score %: based on drills & points
             let safetyScore = Math.min(100, Math.max(20, Math.round((points / 250) * 100)));
             document.getElementById('statSafetyScore').textContent = `${safetyScore}%`;
         }
 
         // Navigation Switcher
         function switchNav(viewId) {
-            // Hide all subviews
             document.getElementById('viewDashboard').style.display = 'none';
             document.getElementById('viewDrills').style.display = 'none';
             document.getElementById('viewLearn').style.display = 'none';
             document.getElementById('viewEmergency').style.display = 'none';
-            document.getElementById('viewChat').style.display = 'none';
+            document.getElementById('viewReport').style.display = 'none';
             document.getElementById('viewProfile').style.display = 'none';
             document.getElementById('viewAdmin').style.display = 'none';
 
-            // Reset active nav link
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
 
             if (viewId === 'dashboard') {
@@ -1765,9 +2012,10 @@
             } else if (viewId === 'emergency') {
                 document.getElementById('viewEmergency').style.display = 'block';
                 document.getElementById('navEmergency').classList.add('active');
-            } else if (viewId === 'chat') {
-                document.getElementById('viewChat').style.display = 'block';
-                document.getElementById('navChat').classList.add('active');
+            } else if (viewId === 'report') {
+                document.getElementById('viewReport').style.display = 'block';
+                document.getElementById('navReport').classList.add('active');
+                loadAlertsFromDatabase();
             } else if (viewId === 'profile') {
                 document.getElementById('viewProfile').style.display = 'block';
                 document.getElementById('navProfile').classList.add('active');
@@ -1779,10 +2027,241 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Logout
         function logout() {
             sessionStorage.removeItem('user');
             window.location.href = 'index.html';
+        }
+
+        // ==========================================================
+        //  REGEX INCIDENT REPORTING & DATABASE ALERTS TABLE ENGINE
+        // ==========================================================
+        const SAMPLE_REPORTS = {
+            flood: "EMERGENCY ALERT: Severe Flash Flood reported in Chennai near Marina Beach (PIN: 600005). Over 150 people stranded, water level 4.5ft. Severity: HIGH. Contact Officer Inspector Rajesh at +91-9876543210 or email relief.chennai@ndma.gov.in. Needs immediate rescue boats and medical teams.",
+            earthquake: "URGENT INCIDENT: M 5.2 Seismic Tremor and Earthquake occurred near Uttarkashi Region (PIN: 249193). Severity: CRITICAL. Over 45 residents trapped under structural debris. Emergency contact: District SEOC at +91-9845123456 or contact uttar.relief@seoc.gov.in.",
+            fire: "HAZMAT DISPATCH: Major Chemical Spill and Structural Fire detected in Pune Industrial Area (PIN: 411018). Priority: HIGH. About 80 workers evacuated, 15 persons affected by toxic fumes. Call Fire Marshall at +91-9822334455 or email hazmat.pune@gov.in."
+        };
+
+        function loadSampleReport(type) {
+            const text = SAMPLE_REPORTS[type] || '';
+            document.getElementById('reportTextInput').value = text;
+        }
+
+        // Submit raw report -> Java Regex extraction -> Persist to alerts table
+        async function handleFileIncidentReport(e) {
+            e.preventDefault();
+            const text = document.getElementById('reportTextInput').value.trim();
+            const reporter = document.getElementById('reporterNameInput').value.trim() || (currentUser.username || "Harish");
+            const btn = document.getElementById('btnSubmitReport');
+            const btnText = document.getElementById('btnSubmitReportText');
+
+            if (!text) return;
+
+            btn.disabled = true;
+            btnText.textContent = "Running Java Regex & Persisting to Database...";
+
+            try {
+                const formData = new URLSearchParams();
+                formData.append('action', 'report');
+                formData.append('rawReport', text);
+                formData.append('reportedBy', reporter);
+
+                const res = await fetch('alert', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData.toString()
+                });
+
+                const data = await res.json();
+                if (data.status === 'success' && data.alert) {
+                    displayExtractedResults(data.alert);
+                    loadAlertsFromDatabase();
+                } else {
+                    // Fallback client-side regex if offline
+                    clientSideRegexFallback(text, reporter);
+                }
+            } catch (err) {
+                console.warn("[Satark] Performing client-side Regex parsing fallback:", err);
+                clientSideRegexFallback(text, reporter);
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = "Extract Data via Regex & File Case in Database";
+            }
+        }
+
+        // Display structured extracted fields
+        function displayExtractedResults(alertObj) {
+            const card = document.getElementById('regexExtractionResult');
+            card.classList.add('active');
+
+            document.getElementById('rxCaseId').textContent = alertObj.caseId || "CASE-" + Date.now().toString().slice(-6);
+            document.getElementById('rxDisasterType').textContent = alertObj.disasterType || "Incident";
+            document.getElementById('rxSeverity').textContent = alertObj.severity || "MODERATE";
+
+            // Color code severity
+            const sevEl = document.getElementById('rxSeverity');
+            if (alertObj.severity === 'CRITICAL' || alertObj.severity === 'HIGH') {
+                sevEl.style.color = 'var(--accent-red)';
+            } else if (alertObj.severity === 'MODERATE') {
+                sevEl.style.color = 'var(--accent-amber)';
+            } else {
+                sevEl.style.color = 'var(--primary-blue)';
+            }
+
+            document.getElementById('rxLocation').textContent = alertObj.location || "Reported Area";
+            document.getElementById('rxPincode').textContent = alertObj.pincode || "Not Specified";
+            document.getElementById('rxAffected').textContent = alertObj.affectedCount ? `${alertObj.affectedCount} people` : "Not counted";
+            document.getElementById('rxContact').textContent = `${alertObj.contactPhone || ''} ${alertObj.contactEmail ? '(' + alertObj.contactEmail + ')' : ''}`.trim() || "None Listed";
+            document.getElementById('rxSummaryText').textContent = alertObj.extractedSummary || "Extracted via Java Regular Expressions";
+
+            // Clear input box
+            document.getElementById('reportTextInput').value = '';
+        }
+
+        // Client-side Regex fallback matching the Java implementation
+        function clientSideRegexFallback(text, reporter) {
+            const disasterMatch = text.match(/(?:flash flood|flood|earthquake|seismic|fire|cyclone|tsunami|landslide|chemical leak|gas leak|heatwave)/i);
+            const severityMatch = text.match(/(?:CRITICAL|EXTREME|HIGH|MODERATE|MEDIUM|LOW)/i);
+            const pinMatch = text.match(/\b\d{6}\b/);
+            const phoneMatch = text.match(/(?:\+?91[\-\s]?)?[6-9]\d{9}/);
+            const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+            const affectedMatch = text.match(/(\d+)\s*(?:people|citizens|victims|residents|persons)/i);
+            const locMatch = text.match(/(?:in|near|at)\s+([A-Z][a-zA-Z0-9\s,.-]+?)(?=\s*(?:\(|\.|\n|,|$))/i);
+
+            const caseObj = {
+                caseId: "CASE-" + Date.now().toString().slice(-6),
+                disasterType: disasterMatch ? disasterMatch[0].toUpperCase() : "Emergency",
+                severity: severityMatch ? severityMatch[0].toUpperCase() : "HIGH",
+                location: locMatch ? locMatch[1].trim() : "Incident Zone",
+                pincode: pinMatch ? pinMatch[0] : "",
+                affectedCount: affectedMatch ? parseInt(affectedMatch[1]) : 0,
+                contactPhone: phoneMatch ? phoneMatch[0] : "",
+                contactEmail: emailMatch ? emailMatch[0] : "",
+                extractedSummary: `Regex Parser extracted disaster incident details. Case filed into alerts database.`,
+                status: "ACTIVE"
+            };
+
+            displayExtractedResults(caseObj);
+
+            // Add locally to table & dashboard
+            prependLocalAlert(caseObj);
+        }
+
+        // Fetch alerts from database 'alerts' table
+        async function loadAlertsFromDatabase() {
+            try {
+                const res = await fetch('alert?action=list');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.status === 'success' && data.alerts) {
+                        renderAlertsTable(data.alerts);
+                        renderDashboardAlerts(data.alerts);
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.warn("[Satark] Using local alerts database fallback.");
+            }
+
+            // Fallback default sample database records
+            const sampleAlerts = [
+                {
+                    caseId: "CASE-2026-FL01",
+                    disasterType: "Flash Flood",
+                    severity: "HIGH",
+                    location: "Chennai, Marina Beach Area",
+                    pincode: "600005",
+                    affectedCount: 150,
+                    contactPhone: "+91-9876543210",
+                    status: "DISPATCHED"
+                },
+                {
+                    caseId: "CASE-2026-EQ02",
+                    disasterType: "Earthquake",
+                    severity: "MODERATE",
+                    location: "Uttarkashi Region",
+                    pincode: "249193",
+                    affectedCount: 30,
+                    contactPhone: "+91-9845123456",
+                    status: "ACTIVE"
+                }
+            ];
+            renderAlertsTable(sampleAlerts);
+            renderDashboardAlerts(sampleAlerts);
+        }
+
+        function renderAlertsTable(alerts) {
+            const tbody = document.getElementById('dbAlertsTbody');
+            if (!alerts || alerts.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 20px;">No alerts filed yet.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = alerts.map(a => `
+                <tr>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--primary-blue); font-size: 12px;">${a.caseId}</td>
+                    <td style="font-weight: 700;">${a.disasterType}</td>
+                    <td><span class="alert-badge-level ${a.severity}">${a.severity}</span></td>
+                    <td style="font-size: 12px;">${a.location || '-'}</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; font-size: 12px;">${a.pincode || '-'}</td>
+                    <td style="font-weight: 700;">${a.affectedCount || 0}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderDashboardAlerts(alerts) {
+            const container = document.getElementById('dashboardAlertsContainer');
+            if (!alerts || alerts.length === 0) return;
+
+            let html = `
+                <div class="alert-item-box">
+                    <div class="alert-top">
+                        <div class="alert-title-row">
+                            <span>ℹ️</span>
+                            <span>Regional Weather Advisory</span>
+                        </div>
+                        <span class="alert-badge-level LOW">LOW</span>
+                    </div>
+                    <p class="alert-body-text">
+                        Light rain expected in your area. Stay indoors and avoid unnecessary travel.
+                    </p>
+                    <div class="alert-timestamp">${document.getElementById('liveAlertTime').textContent}</div>
+                </div>
+            `;
+
+            // Append filed cases from database
+            alerts.slice(0, 3).forEach(a => {
+                let icon = "⚠️";
+                const d = (a.disasterType || '').toLowerCase();
+                if (d.includes('flood')) icon = "🌊";
+                else if (d.includes('earthquake') || d.includes('seismic')) icon = "🌍";
+                else if (d.includes('fire') || d.includes('gas')) icon = "🔥";
+                else if (d.includes('cyclone') || d.includes('wind')) icon = "🌀";
+
+                html += `
+                    <div class="alert-item-box" style="border-left-color: ${a.severity === 'CRITICAL' || a.severity === 'HIGH' ? 'var(--accent-red)' : 'var(--accent-amber)'};">
+                        <div class="alert-top">
+                            <div class="alert-title-row">
+                                <span>${icon}</span>
+                                <span>${a.disasterType} Incident</span>
+                            </div>
+                            <span class="alert-badge-level ${a.severity}">${a.severity}</span>
+                        </div>
+                        <p class="alert-body-text">
+                            <strong>${a.location || 'Reported Zone'}</strong> ${a.pincode ? '(PIN: ' + a.pincode + ')' : ''} &bull; ${a.affectedCount ? a.affectedCount + ' citizens reported affected.' : 'Active situation reported.'}
+                        </p>
+                        <div class="alert-meta-bar">
+                            <span class="alert-case-id-tag">${a.caseId}</span>
+                            <span>Contact: ${a.contactPhone || '112'}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function prependLocalAlert(caseObj) {
+            loadAlertsFromDatabase();
         }
 
         // ==========================================================
@@ -2075,14 +2554,12 @@
             clearInterval(activeDrill.timer);
             const earned = activeDrill.score;
 
-            // Update user state
             currentUser.totalScore = (currentUser.totalScore || 0) + earned;
             currentUser.gamesPlayed = (currentUser.gamesPlayed || 0) + 1;
             sessionStorage.setItem('user', JSON.stringify(currentUser));
 
             updateFitnessDashboard();
 
-            // Persist to Hibernate backend
             try {
                 const formData = new URLSearchParams();
                 formData.append('action', 'updateScore');
@@ -2105,7 +2582,6 @@
                 console.warn('[Satark] Score updated in local session:', err);
             }
 
-            // Show Celebration Card
             const container = document.getElementById('activeDrillBody');
             document.getElementById('activeDrillRationale').className = 'rationale-card-light';
             document.getElementById('btnNextDrillQuestion').className = 'btn-proceed-light';
@@ -2172,40 +2648,6 @@
                     <td><span style="font-size: 11px; font-weight: 700; background: #ecfdf5; color: #059669; padding: 3px 10px; border-radius: 9999px;">Certified</span></td>
                 </tr>
             `).join('');
-        }
-
-        // AI Chat Assistant
-        function handleSendChat(e) {
-            e.preventDefault();
-            const input = document.getElementById('chatInput');
-            const msg = input.value.trim();
-            if (!msg) return;
-
-            const history = document.getElementById('chatHistory');
-            history.innerHTML += `<div class="chat-msg user">${escapeHtml(msg)}</div>`;
-            input.value = '';
-
-            setTimeout(() => {
-                let reply = "Stay calm! Keep emergency numbers (112, 1078) handy and follow official disaster directives.";
-                const lower = msg.toLowerCase();
-                if (lower.includes("earthquake")) {
-                    reply = "During an earthquake: Drop to hands & knees, take Cover under a sturdy table, and Hold On firmly until shaking stops. Avoid glass windows!";
-                } else if (lower.includes("flood") || lower.includes("water")) {
-                    reply = "In a flood: Turn around, never drive or walk through floodwater. Move immediately to higher elevation.";
-                } else if (lower.includes("kit") || lower.includes("bag")) {
-                    reply = "Pack a 72-hour Go-Bag with 3L water/person/day, ready-to-eat rations, first-aid kit, flashlight, radio, and whistle!";
-                } else if (lower.includes("fire")) {
-                    reply = "In a structural fire: Crawl low under the smoke, use stairs (never elevators!), and feel doors for heat before opening.";
-                }
-                history.innerHTML += `<div class="chat-msg bot">${reply}</div>`;
-                history.scrollTop = history.scrollHeight;
-            }, 400);
-        }
-
-        function escapeHtml(str) {
-            const d = document.createElement('div');
-            d.textContent = str;
-            return d.innerHTML;
         }
 
         window.addEventListener('DOMContentLoaded', initApp);

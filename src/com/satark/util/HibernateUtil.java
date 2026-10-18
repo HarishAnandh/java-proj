@@ -1,5 +1,6 @@
 package com.satark.util;
 
+import com.satark.model.Alert;
 import com.satark.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,13 +15,14 @@ public class HibernateUtil {
 
     static {
         try {
-            // Build SessionFactory from hibernate.cfg.xml and register entity
+            // Build SessionFactory from hibernate.cfg.xml and register entities
             sessionFactory = new Configuration()
                     .configure("hibernate.cfg.xml")
                     .addAnnotatedClass(User.class)
+                    .addAnnotatedClass(Alert.class)
                     .buildSessionFactory();
             initialized = true;
-            System.out.println("[SATARK] Hibernate SessionFactory initialized successfully.");
+            System.out.println("[SATARK] Hibernate SessionFactory initialized successfully with User and Alert entities.");
         } catch (Throwable ex) {
             System.err.println("[SATARK] Hibernate SessionFactory initialization failed: " + ex);
             initialized = false;

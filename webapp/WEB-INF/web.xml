@@ -41,4 +41,18 @@
         <url-pattern>/game</url-pattern>
     </servlet-mapping>
 
+    <!-- ============================================== -->
+    <!--  AlertServlet Configuration (Regex & Cases)    -->
+    <!--  Handles: Regex extraction & database alerts   -->
+    <!--  Powered by Hibernate ORM with JDBC fallback   -->
+    <!-- ============================================== -->
+    <servlet>
+        <servlet-name>AlertServlet</servlet-name>
+        <servlet-class>com.satark.servlet.AlertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AlertServlet</servlet-name>
+        <url-pattern>/alert</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -29,5 +29,6 @@
 
         <!-- Entity Class Mappings -->
         <mapping class="com.satark.model.User"/>
+        <mapping class="com.satark.model.Alert"/>
     </session-factory>
 </hibernate-configuration>
