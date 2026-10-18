@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="SATARK - Integrated Disaster Management, Early Warning, and Citizen Safety Preparedness Portal.">
-    <title>SATARK - Disaster Management & Preparedness Portal</title>
+        content="Satark - Stay Safe, Stay Ready. Gamified disaster safety and emergency preparedness platform.">
+    <title>Satark — Stay Safe, Stay Ready</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
         /* ==========================================================
-           SATARK DESIGN SYSTEM - PURPOSE-BUILT FOR DISASTER MANAGEMENT
-           Clean, simple, high-contrast, robust and mission-ready.
+           SATARK DESIGN SYSTEM - LIGHT & SMOOTH FITNESS APP AESTHETIC
+           Clean, airy, friendly, vibrant, and approachable.
            ========================================================== */
         * {
             margin: 0;
@@ -23,360 +23,397 @@
         }
 
         :root {
-            /* Disaster Management Palette: Deep Slate, Emergency Red, Alert Amber, Safe Green */
-            --bg-base: #0f172a;         /* Deep slate */
-            --bg-surface: #1e293b;      /* Panel slate */
-            --bg-elevated: #334155;     /* Card highlight */
-            --border-subtle: #334155;
-            --border-strong: #475569;
+            --bg-body: #f4f7fb;
+            --bg-card: #ffffff;
+            --bg-card-subtle: #f8fafc;
+            --border-color: #e2e8f0;
+            --border-subtle: #edf2f7;
 
-            --text-main: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --text-heading: #0f172a;
+            --text-body: #475569;
+            --text-muted: #94a3b8;
 
-            --emergency-red: #ef4444;
-            --emergency-red-bg: rgba(239, 68, 68, 0.12);
-            --emergency-red-border: rgba(239, 68, 68, 0.35);
-
-            --warning-amber: #f59e0b;
-            --warning-amber-bg: rgba(245, 158, 11, 0.12);
-            --warning-amber-border: rgba(245, 158, 11, 0.35);
-
-            --safe-green: #10b981;
-            --safe-green-bg: rgba(16, 185, 129, 0.12);
-            --safe-green-border: rgba(16, 185, 129, 0.35);
-
+            /* Vibrant Fitness Accents */
             --primary-blue: #2563eb;
             --primary-blue-hover: #1d4ed8;
+            --primary-blue-light: #eff6ff;
 
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 14px;
+            --accent-green: #10b981;
+            --accent-green-light: #ecfdf5;
+
+            --accent-orange: #f97316;
+            --accent-orange-light: #fff7ed;
+
+            --accent-amber: #f59e0b;
+            --accent-amber-light: #fefce8;
+
+            --accent-purple: #8b5cf6;
+            --accent-purple-light: #f5f3ff;
+
+            --accent-red: #ef4444;
+            --accent-red-light: #fef2f2;
+
+            /* Gradients */
+            --hero-gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+            --card-shadow-hover: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-body);
             min-height: 100vh;
             line-height: 1.5;
             display: flex;
             flex-direction: column;
         }
 
-        /* Top Emergency Broadcast & Helpline Ticker */
-        .emergency-topbar {
-            background: #020617;
+        /* Top Helpline Ticker */
+        .top-helpline-bar {
+            background: #ffffff;
             border-bottom: 1px solid var(--border-subtle);
-            padding: 8px 24px;
+            padding: 8px 32px;
             font-size: 13px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: var(--text-muted);
             flex-wrap: wrap;
             gap: 12px;
         }
 
-        .status-badge {
+        .status-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             font-weight: 600;
-            color: var(--safe-green);
+            color: var(--accent-green);
+            background: var(--accent-green-light);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
         }
 
-        .status-pulse {
-            width: 8px;
-            height: 8px;
-            background: var(--safe-green);
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent-green);
             border-radius: 50%;
-            display: inline-block;
         }
 
-        .helpline-quick {
+        .helpline-pills {
             display: flex;
             align-items: center;
-            gap: 16px;
-            font-family: 'JetBrains Mono', monospace;
+            gap: 12px;
             font-size: 12px;
-            color: var(--text-secondary);
+            font-weight: 600;
         }
 
-        .helpline-quick strong {
-            color: var(--text-main);
+        .helpline-tag {
+            color: var(--text-body);
+            background: #f1f5f9;
+            padding: 3px 10px;
+            border-radius: 6px;
         }
 
-        .helpline-sos-badge {
-            background: var(--emergency-red-bg);
-            border: 1px solid var(--emergency-red-border);
-            color: var(--emergency-red);
-            padding: 2px 8px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
+        .helpline-tag strong {
+            color: var(--accent-red);
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Main Navigation Bar */
-        .navbar {
-            background: var(--bg-surface);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 14px 24px;
+        /* Navbar */
+        .landing-nav {
+            background: #ffffff;
+            padding: 16px 32px;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .brand-container {
+        .brand-box {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: inherit;
         }
 
-        .brand-shield {
-            width: 38px;
-            height: 38px;
-            background: var(--primary-blue);
-            border-radius: var(--radius-sm);
+        .brand-icon-shield {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .brand-title-group h1 {
-            font-size: 19px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .brand-lang-badge {
-            font-size: 11px;
-            font-weight: 600;
-            background: var(--bg-elevated);
-            color: var(--text-secondary);
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        .brand-subtitle {
-            font-size: 11px;
-            color: var(--text-secondary);
-            font-weight: 500;
-            letter-spacing: 0.2px;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-sos {
-            background: var(--emergency-red);
             color: #ffffff;
-            border: none;
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+
+        .brand-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.3px;
+            line-height: 1.1;
+        }
+
+        .brand-tagline {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .nav-quick-btn {
+            background: var(--accent-green-light);
+            color: var(--accent-green);
+            border: 1px solid #d1fae5;
+            padding: 8px 18px;
+            border-radius: 9999px;
             font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
         }
 
-        .btn-sos:hover {
-            opacity: 0.9;
+        .nav-quick-btn:hover {
+            background: #d1fae5;
         }
 
-        /* Layout Container */
-        .main-layout {
+        /* Main Container */
+        .landing-main {
             flex: 1;
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
-            padding: 32px 24px;
+            padding: 40px 24px;
             display: grid;
-            grid-template-columns: 1.25fr 1fr;
-            gap: 32px;
-            align-items: start;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        /* Left Column: Mission Overview & Quick Directives */
-        .portal-summary {
+        /* Left Side: Preview Hero */
+        .hero-left {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
-        .notice-banner {
-            background: rgba(37, 99, 235, 0.1);
-            border: 1px solid rgba(37, 99, 235, 0.3);
-            border-left: 4px solid var(--primary-blue);
-            padding: 14px 18px;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            color: #bfdbfe;
+        .hero-badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+            width: fit-content;
         }
 
-        .notice-banner strong {
-            color: #ffffff;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .hero-heading {
-            font-size: 32px;
+        .hero-title {
+            font-size: 40px;
             font-weight: 800;
-            line-height: 1.25;
-            color: var(--text-main);
+            color: var(--text-heading);
+            line-height: 1.15;
+            letter-spacing: -0.8px;
         }
 
-        .hero-desc {
-            font-size: 15px;
-            color: var(--text-secondary);
+        .hero-title span {
+            background: linear-gradient(135deg, #2563eb, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: var(--text-body);
             line-height: 1.6;
         }
 
-        /* Clean Metric Grid */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .metric-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            padding: 16px;
-            border-radius: var(--radius-sm);
-        }
-
-        .metric-number {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--text-main);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .metric-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            font-weight: 500;
-        }
-
-        /* Quick Disaster Action Cards */
-        .protocols-header {
-            font-size: 15px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
+        /* Mini Preview Card simulating the fitness banner in the image */
+        .preview-banner {
+            background: var(--hero-gradient);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.25);
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        .protocol-cards-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .protocol-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            padding: 14px;
+        .pb-left {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .pb-trophy {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            position: relative;
+        }
+
+        .pb-trophy-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #f59e0b;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffffff;
+        }
+
+        .pb-name {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .pb-points {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .pb-progress-wrap {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .pb-prog-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            opacity: 0.95;
+        }
+
+        .pb-prog-track {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pb-prog-bar {
+            height: 100%;
+            width: 28%;
+            background: #0f172a;
+            border-radius: 9999px;
+        }
+
+        .pb-prog-sub {
+            font-size: 11px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .pb-badge-keep {
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
             gap: 6px;
         }
 
-        .protocol-type {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+        /* 3 Feature Pills */
+        .features-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
         }
 
-        .protocol-type.earthquake { color: #f59e0b; }
-        .protocol-type.flood { color: #38bdf8; }
-        .protocol-type.fire { color: #f87171; }
-        .protocol-type.gas { color: #a78bfa; }
-
-        .protocol-rule {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .protocol-sub {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        /* Right Column: Clean Authentication Panel */
-        .auth-panel {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
+        .feature-card-sm {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            box-shadow: var(--card-shadow);
         }
 
-        .auth-header {
-            padding: 18px 24px;
-            border-bottom: 1px solid var(--border-subtle);
-            background: #141f36;
+        .feature-card-sm .fc-icon {
+            font-size: 22px;
+            margin-bottom: 8px;
         }
 
-        .auth-header h2 {
-            font-size: 17px;
+        .feature-card-sm h4 {
+            font-size: 14px;
             font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 2px;
         }
 
-        .auth-header p {
+        .feature-card-sm p {
             font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 4px;
+            color: var(--text-muted);
         }
 
-        /* Clean Tabs */
-        .auth-tabs {
+        /* Right Side: Clean White Auth Card */
+        .auth-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        .auth-tabs-pill {
             display: flex;
-            border-bottom: 1px solid var(--border-subtle);
-            background: #111a2e;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 12px;
+            margin-bottom: 24px;
         }
 
         .auth-tab-btn {
             flex: 1;
-            background: transparent;
             border: none;
-            padding: 12px 16px;
+            background: transparent;
+            padding: 10px 16px;
             font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
+            font-weight: 700;
+            color: var(--text-muted);
+            border-radius: 8px;
             cursor: pointer;
-            border-bottom: 2px solid transparent;
             transition: all 0.2s;
         }
 
         .auth-tab-btn.active {
-            color: #ffffff;
-            background: var(--bg-surface);
-            border-bottom-color: var(--primary-blue);
-        }
-
-        .auth-body {
-            padding: 24px;
+            background: #ffffff;
+            color: var(--text-heading);
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
         }
 
         .auth-form {
@@ -389,209 +426,126 @@
             display: flex;
         }
 
-        .input-group {
+        .form-group {
             display: flex;
             flex-direction: column;
             gap: 6px;
         }
 
-        .input-group label {
-            font-size: 12px;
+        .form-group label {
+            font-size: 13px;
             font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
+            color: var(--text-heading);
         }
 
-        .input-group input {
-            background: var(--bg-base);
-            border: 1px solid var(--border-strong);
-            padding: 10px 14px;
+        .form-group input {
+            background: #f8fafc;
+            border: 1.5px solid var(--border-color);
+            padding: 12px 16px;
             border-radius: var(--radius-sm);
-            color: var(--text-main);
             font-size: 14px;
+            color: var(--text-heading);
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s;
         }
 
-        .input-group input:focus {
+        .form-group input:focus {
+            background: #ffffff;
             border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
         }
 
-        .btn-submit {
+        .btn-auth-submit {
             background: var(--primary-blue);
             color: #ffffff;
             border: none;
-            padding: 12px 18px;
+            padding: 13px;
             border-radius: var(--radius-sm);
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            transition: background 0.2s;
-            margin-top: 4px;
+            transition: all 0.2s;
+            margin-top: 6px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
 
-        .btn-submit:hover {
+        .btn-auth-submit:hover {
             background: var(--primary-blue-hover);
+            transform: translateY(-1px);
         }
 
-        .feedback-message {
+        .auth-feedback {
             display: none;
             padding: 10px 14px;
             border-radius: var(--radius-sm);
             font-size: 13px;
-            margin-top: 12px;
+            font-weight: 500;
+            margin-top: 10px;
         }
 
-        .feedback-message.success {
+        .auth-feedback.success {
             display: block;
-            background: var(--safe-green-bg);
-            border: 1px solid var(--safe-green-border);
-            color: var(--safe-green);
+            background: var(--accent-green-light);
+            border: 1px solid #a7f3d0;
+            color: var(--accent-green);
         }
 
-        .feedback-message.error {
+        .auth-feedback.error {
             display: block;
-            background: var(--emergency-red-bg);
-            border: 1px solid var(--emergency-red-border);
-            color: var(--emergency-red);
+            background: var(--accent-red-light);
+            border: 1px solid #fecaca;
+            color: var(--accent-red);
         }
 
-        .offline-bypass-box {
-            margin-top: 16px;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px dashed var(--border-subtle);
-            border-radius: var(--radius-sm);
+        /* Demo Button */
+        .demo-bypass-wrap {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px dashed var(--border-color);
             text-align: center;
-            font-size: 12px;
-            color: var(--text-muted);
         }
 
-        .btn-quick-enter {
-            background: transparent;
-            border: 1px solid var(--border-strong);
-            color: var(--text-main);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 8px;
-            display: inline-block;
-        }
-
-        .btn-quick-enter:hover {
-            background: var(--bg-elevated);
-        }
-
-        /* SOS Modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-box {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-md);
-            max-width: 580px;
-            width: 100%;
-            padding: 24px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border-subtle);
-            padding-bottom: 12px;
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--emergency-red);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-close-modal {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .helpline-table {
-            width: 100%;
-            border-collapse: collapse;
+        .btn-guest-enter {
+            background: #f1f5f9;
+            color: var(--text-heading);
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 9999px;
             font-size: 13px;
-            margin-bottom: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
         }
 
-        .helpline-table th,
-        .helpline-table td {
-            padding: 8px 12px;
-            border: 1px solid var(--border-subtle);
-            text-align: left;
-        }
-
-        .helpline-table th {
-            background: var(--bg-base);
-            color: var(--text-secondary);
-        }
-
-        .helpline-table td strong {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--emergency-red);
-            font-size: 14px;
+        .btn-guest-enter:hover {
+            background: #e2e8f0;
         }
 
         /* Footer */
-        .portal-footer {
-            background: #020617;
-            border-top: 1px solid var(--border-subtle);
-            padding: 16px 24px;
-            font-size: 12px;
-            color: var(--text-muted);
-            text-align: center;
+        .landing-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 18px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 12px;
+            color: var(--text-muted);
             flex-wrap: wrap;
             gap: 12px;
         }
 
-        @media (max-width: 860px) {
-            .main-layout {
+        @media (max-width: 900px) {
+            .landing-main {
                 grid-template-columns: 1fr;
             }
-            .protocol-cards-grid {
+            .features-row {
                 grid-template-columns: 1fr;
-            }
-            .emergency-topbar {
-                flex-direction: column;
-                align-items: flex-start;
             }
         }
     </style>
@@ -599,254 +553,186 @@
 
 <body>
 
-    <!-- Top Emergency Advisory Bar -->
-    <div class="emergency-topbar">
-        <div class="status-badge">
-            <span class="status-pulse"></span>
-            <span>SATARK NATIONAL SYSTEM STATUS: LEVEL 1 — NORMAL MONITORING</span>
+    <!-- Top Alert / Helpline Ticker -->
+    <div class="top-helpline-bar">
+        <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>SATARK LIVE SAFETY NETWORK &bull; STATUS: NORMAL</span>
         </div>
-        <div class="helpline-quick">
-            <span>EMERGENCY HELPLINE: <span class="helpline-sos-badge">112</span></span>
-            <span>NDMA HELPLINE: <strong>1078</strong></span>
-            <span>DISASTER RELIEF: <strong>1070</strong></span>
+        <div class="helpline-pills">
+            <span>Emergency Helplines:</span>
+            <span class="helpline-tag">National SOS: <strong>112</strong></span>
+            <span class="helpline-tag">Disaster Relief: <strong>1070</strong></span>
+            <span class="helpline-tag">NDMA: <strong>1078</strong></span>
         </div>
     </div>
 
-    <!-- Main Navigation Bar -->
-    <header class="navbar">
-        <a href="index.html" class="brand-container">
-            <div class="brand-shield">🛡️</div>
-            <div class="brand-title-group">
-                <h1>SATARK <span class="brand-lang-badge">सतर्क</span></h1>
-                <div class="brand-subtitle">Integrated Disaster Management & Safety System</div>
+    <!-- Main Navbar -->
+    <header class="landing-nav">
+        <a href="index.html" class="brand-box">
+            <div class="brand-icon-shield">🛡️</div>
+            <div>
+                <div class="brand-title">Satark</div>
+                <div class="brand-tagline">Stay Safe, Stay Ready</div>
             </div>
         </a>
-        <div class="nav-actions">
-            <button class="btn-sos" onclick="openSosModal()">
-                <span>🚨</span>
-                <span>EMERGENCY DIRECTORY</span>
-            </button>
-        </div>
+        <button class="nav-quick-btn" onclick="enterDemoMode()">⚡ Quick Guest Access</button>
     </header>
 
     <!-- Main Content -->
-    <main class="main-layout">
+    <main class="landing-main">
 
-        <!-- Left Column: Operations Overview & Protocols -->
-        <section class="portal-summary">
-
-            <div class="notice-banner">
-                <strong>OFFICIAL PREPAREDNESS DIRECTIVE</strong>
-                Regular drills drastically minimize reaction time and loss of life during catastrophic natural and industrial hazards. Complete all 3 certified SATARK training drills to verify your readiness.
+        <!-- Left: Fitness-Style Overview -->
+        <section class="hero-left">
+            <div class="hero-badge-tag">
+                <span>🎯</span>
+                <span>Interactive Disaster Safety Training</span>
             </div>
 
-            <div>
-                <h2 class="hero-heading">Disaster Readiness, Early Warning & Training</h2>
-                <p class="hero-desc">
-                    SATARK is a standardized disaster preparedness and assessment platform. Learn verified life-saving protocols for earthquakes, flash floods, urban fires, tsunamis, and industrial hazards.
-                </p>
+            <h1 class="hero-title">
+                Train your emergency instincts like a <span>daily habit</span>.
+            </h1>
+
+            <p class="hero-subtitle">
+                Level up your disaster preparedness with verified drills for earthquakes, flash floods, structural fires, and cyclones. Earn points, track your safety score, and unlock community responder badges.
+            </p>
+
+            <!-- Featured Progress Card Simulation -->
+            <div class="preview-banner">
+                <div class="pb-left">
+                    <div class="pb-trophy">
+                        🏆
+                        <div class="pb-trophy-badge">1</div>
+                    </div>
+                    <div>
+                        <div class="pb-name">Level 1 Hero</div>
+                        <div class="pb-points">10 Points Earned</div>
+                    </div>
+                </div>
+
+                <div class="pb-progress-wrap">
+                    <div class="pb-prog-labels">
+                        <span>Progress to Level 2</span>
+                        <span>4%</span>
+                    </div>
+                    <div class="pb-prog-track">
+                        <div class="pb-prog-bar"></div>
+                    </div>
+                    <div class="pb-prog-sub">240 points until next level</div>
+                </div>
+
+                <div class="pb-badge-keep">⚡ Keep Going!</div>
             </div>
 
-            <!-- Key Indicators -->
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">03</div>
-                    <div class="metric-label">Certified Drill Modules</div>
+            <!-- Mini Feature Cards -->
+            <div class="features-row">
+                <div class="feature-card-sm">
+                    <div class="fc-icon">🧠</div>
+                    <h4>Safety Quiz</h4>
+                    <p>10 rapid incident protocols</p>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-number">15+</div>
-                    <div class="metric-label">Incident Scenarios</div>
+                <div class="feature-card-sm">
+                    <div class="fc-icon">🔤</div>
+                    <h4>Word Scramble</h4>
+                    <p>Emergency hazard codes</p>
                 </div>
-                <div class="metric-card">
-                    <div class="metric-number">100%</div>
-                    <div class="metric-label">Evidence-Based Guidance</div>
-                </div>
-            </div>
-
-            <!-- Immediate Disaster Action Cheat Sheet -->
-            <div class="protocols-header">
-                <span>📋 Instant Emergency Protocols</span>
-            </div>
-
-            <div class="protocol-cards-grid">
-                <div class="protocol-card">
-                    <span class="protocol-type earthquake">Seismic / Earthquake</span>
-                    <span class="protocol-rule">Drop, Cover, and Hold On</span>
-                    <span class="protocol-sub">Under sturdy table or desk. Stay away from glass windows and power lines.</span>
-                </div>
-                <div class="protocol-card">
-                    <span class="protocol-type flood">Hydrological / Flood</span>
-                    <span class="protocol-rule">Turn Around, Don't Drown</span>
-                    <span class="protocol-sub">Evacuate to elevated ground immediately. Never drive or wade through floodwaters.</span>
-                </div>
-                <div class="protocol-card">
-                    <span class="protocol-type fire">Structural Fire & Smoke</span>
-                    <span class="protocol-rule">Crawl Low Under Smoke</span>
-                    <span class="protocol-sub">Clean air sits near floor. Use staircase exit immediately; never use elevators.</span>
-                </div>
-                <div class="protocol-card">
-                    <span class="protocol-type gas">Hazardous Gas / Chemical</span>
-                    <span class="protocol-rule">Evacuate Upwind Immediately</span>
-                    <span class="protocol-sub">Do not operate electrical switches, matches, or indoor phones. Report outside.</span>
+                <div class="feature-card-sm">
+                    <div class="fc-icon">🎯</div>
+                    <h4>Decision Matrix</h4>
+                    <p>Critical situation choices</p>
                 </div>
             </div>
-
         </section>
 
-        <!-- Right Column: Clean Authentication Box -->
-        <section class="auth-panel">
-            <div class="auth-header">
-                <h2>Officer & Citizen Portal</h2>
-                <p>Sign in to record drill scores, track safety certifications, and view the national readiness board.</p>
+        <!-- Right: Clean White Auth Panel -->
+        <section class="auth-container">
+            <div class="auth-tabs-pill">
+                <button class="auth-tab-btn active" id="tabLogin" onclick="switchAuthTab('login')">Sign In</button>
+                <button class="auth-tab-btn" id="tabRegister" onclick="switchAuthTab('register')">Create Account</button>
             </div>
 
-            <!-- Tabs -->
-            <div class="auth-tabs">
-                <button class="auth-tab-btn active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
-                <button class="auth-tab-btn" id="tabRegister" onclick="switchTab('register')">Register Profile</button>
-            </div>
-
-            <div class="auth-body">
-                <!-- Login Form -->
-                <form class="auth-form active" id="loginForm" onsubmit="handleLogin(event)">
-                    <div class="input-group">
-                        <label for="loginUser">Username / ID</label>
-                        <input type="text" id="loginUser" placeholder="Enter your registered username" required autocomplete="username">
-                    </div>
-                    <div class="input-group">
-                        <label for="loginPass">Password</label>
-                        <input type="password" id="loginPass" placeholder="Enter password" required autocomplete="current-password">
-                    </div>
-                    <button type="submit" class="btn-submit" id="loginBtn">
-                        <span id="loginBtnText">Sign In to SATARK Console</span>
-                    </button>
-                    <div class="feedback-message" id="loginMsg"></div>
-                </form>
-
-                <!-- Registration Form -->
-                <form class="auth-form" id="registerForm" onsubmit="handleRegister(event)">
-                    <div class="input-group">
-                        <label for="regUser">Choose Username / Citizen ID</label>
-                        <input type="text" id="regUser" placeholder="Minimum 3 characters" required minlength="3" autocomplete="username">
-                    </div>
-                    <div class="input-group">
-                        <label for="regPass">Set Password</label>
-                        <input type="password" id="regPass" placeholder="Minimum 4 characters" required minlength="4" autocomplete="new-password">
-                    </div>
-                    <div class="input-group">
-                        <label for="regPassConfirm">Confirm Password</label>
-                        <input type="password" id="regPassConfirm" placeholder="Re-enter password" required autocomplete="new-password">
-                    </div>
-                    <button type="submit" class="btn-submit" id="regBtn">
-                        <span id="regBtnText">Create SATARK Profile</span>
-                    </button>
-                    <div class="feedback-message" id="regMsg"></div>
-                </form>
-
-                <!-- Offline / Direct Testing Option -->
-                <div class="offline-bypass-box">
-                    <span>Direct testing or offline deployment?</span><br>
-                    <button type="button" class="btn-quick-enter" onclick="enterDemoMode()">
-                        Launch Demo Console (Guest Access)
-                    </button>
+            <!-- Sign In Form -->
+            <form class="auth-form active" id="formLogin" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter your username" required autocomplete="username">
                 </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-auth-submit" id="btnLoginSubmit">
+                    <span>Sign In to Satark</span>
+                </button>
+                <div class="auth-feedback" id="loginFeedback"></div>
+            </form>
+
+            <!-- Register Form -->
+            <form class="auth-form" id="formRegister" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="regUsername">Choose Username</label>
+                    <input type="text" id="regUsername" placeholder="e.g. Harish" required minlength="3" autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" placeholder="Minimum 4 characters" required minlength="4" autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="regPasswordConfirm">Confirm Password</label>
+                    <input type="password" id="regPasswordConfirm" placeholder="Re-type password" required autocomplete="new-password">
+                </div>
+                <button type="submit" class="btn-auth-submit" id="btnRegSubmit">
+                    <span>Create Profile & Start Drills</span>
+                </button>
+                <div class="auth-feedback" id="regFeedback"></div>
+            </form>
+
+            <!-- Direct Guest Demo Mode -->
+            <div class="demo-bypass-wrap">
+                <button type="button" class="btn-guest-enter" onclick="enterDemoMode()">
+                    🚀 Launch Demo as Guest (No Login Required)
+                </button>
             </div>
         </section>
 
     </main>
 
-    <!-- Emergency SOS Directory Modal -->
-    <div class="modal-overlay" id="sosModal">
-        <div class="modal-box">
-            <div class="modal-header">
-                <div class="modal-title">🚨 National Emergency Response Directory</div>
-                <button class="btn-close-modal" onclick="closeSosModal()">&times;</button>
-            </div>
-            <table class="helpline-table">
-                <thead>
-                    <tr>
-                        <th>Emergency Agency</th>
-                        <th>Toll-Free Dial</th>
-                        <th>Standard Response</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Unified National Emergency</td>
-                        <td><strong>112</strong></td>
-                        <td>Police, Fire, Ambulance coordination</td>
-                    </tr>
-                    <tr>
-                        <td>National Disaster Management (NDMA)</td>
-                        <td><strong>1078</strong></td>
-                        <td>Disaster early alerts & relief coordination</td>
-                    </tr>
-                    <tr>
-                        <td>State Disaster Management (SEOC)</td>
-                        <td><strong>1070</strong></td>
-                        <td>State disaster relief & evacuation dispatch</td>
-                    </tr>
-                    <tr>
-                        <td>District Disaster Control Room</td>
-                        <td><strong>1077</strong></td>
-                        <td>Local shelter locations & supplies</td>
-                    </tr>
-                    <tr>
-                        <td>Fire & Rescue Services</td>
-                        <td><strong>101</strong></td>
-                        <td>Building fires & chemical containment</td>
-                    </tr>
-                    <tr>
-                        <td>Ambulance & Emergency Medical</td>
-                        <td><strong>108</strong></td>
-                        <td>Emergency triage & transport</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
-                In the event of an imminent catastrophe, maintain calm, preserve phone battery for critical communications, and adhere strictly to official government advisories broadcast over radio and mobile emergency cell alerts.
-            </p>
-        </div>
-    </div>
-
-    <!-- Portal Footer -->
-    <footer class="portal-footer">
+    <!-- Footer -->
+    <footer class="landing-footer">
         <div>
-            <strong>SATARK (सतर्क)</strong> — Disaster Management & Community Safety Framework.
+            <strong>Satark</strong> — Disaster Safety & Community Preparedness Network
         </div>
         <div>
-            Hibernate ORM Backend &bull; Apache Tomcat &bull; PostgreSQL
+            Powered by Hibernate ORM &bull; Apache Tomcat
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Logic -->
     <script>
-        // Tab Switcher
-        function switchTab(tab) {
-            document.getElementById('loginForm').classList.toggle('active', tab === 'login');
-            document.getElementById('registerForm').classList.toggle('active', tab === 'register');
+        function switchAuthTab(tab) {
+            document.getElementById('formLogin').classList.toggle('active', tab === 'login');
+            document.getElementById('formRegister').classList.toggle('active', tab === 'register');
             document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
             document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
 
-            document.getElementById('loginMsg').style.display = 'none';
-            document.getElementById('regMsg').style.display = 'none';
+            document.getElementById('loginFeedback').style.display = 'none';
+            document.getElementById('regFeedback').style.display = 'none';
         }
 
-        // Show feedback message
-        function showFeedback(elementId, text, type) {
-            const el = document.getElementById(elementId);
-            el.textContent = text;
-            el.className = 'feedback-message ' + type;
+        function showMessage(elId, msg, type) {
+            const el = document.getElementById(elId);
+            el.textContent = msg;
+            el.className = 'auth-feedback ' + type;
         }
 
-        // Handle Login
-        async function handleLogin(event) {
-            event.preventDefault();
-            const username = document.getElementById('loginUser').value.trim();
-            const password = document.getElementById('loginPass').value;
-            const btnText = document.getElementById('loginBtnText');
+        async function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('btnLoginSubmit');
 
-            btnText.textContent = 'Verifying credentials...';
+            btn.disabled = true;
+            btn.innerHTML = '<span>Verifying...</span>';
 
             try {
                 const formData = new URLSearchParams();
@@ -860,41 +746,36 @@
                     body: formData.toString()
                 });
 
-                if (!res.ok) {
-                    throw new Error('HTTP ' + res.status);
-                }
-
                 const data = await res.json();
                 if (data.status === 'success') {
                     sessionStorage.setItem('user', JSON.stringify(data.user));
-                    showFeedback('loginMsg', 'Authenticated successfully. Redirecting to SATARK Console...', 'success');
+                    showMessage('loginFeedback', 'Welcome back, ' + data.user.username + '! Redirecting...', 'success');
                     setTimeout(() => { window.location.href = 'game.html'; }, 600);
                 } else {
-                    showFeedback('loginMsg', data.message || 'Authentication failed. Please verify credentials.', 'error');
+                    showMessage('loginFeedback', data.message || 'Invalid username or password.', 'error');
                 }
             } catch (err) {
-                // If backend servlet is not responding (e.g. running outside tomcat during preview),
-                // provide helpful diagnosis and allow demo fallback
-                showFeedback('loginMsg', 'Server communication notice: ' + (err.message || 'Connection refused') + '. Click "Launch Demo Console" below for instant offline preview.', 'error');
+                showMessage('loginFeedback', 'Server notice: Running locally. You can use Guest Demo mode below!', 'error');
             } finally {
-                btnText.textContent = 'Sign In to SATARK Console';
+                btn.disabled = false;
+                btn.innerHTML = '<span>Sign In to Satark</span>';
             }
         }
 
-        // Handle Register
-        async function handleRegister(event) {
-            event.preventDefault();
-            const username = document.getElementById('regUser').value.trim();
-            const password = document.getElementById('regPass').value;
-            const confirm = document.getElementById('regPassConfirm').value;
-            const btnText = document.getElementById('regBtnText');
+        async function handleRegister(e) {
+            e.preventDefault();
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regPasswordConfirm').value;
+            const btn = document.getElementById('btnRegSubmit');
 
             if (password !== confirm) {
-                showFeedback('regMsg', 'Passwords do not match.', 'error');
+                showMessage('regFeedback', 'Passwords do not match.', 'error');
                 return;
             }
 
-            btnText.textContent = 'Creating SATARK profile...';
+            btn.disabled = true;
+            btn.innerHTML = '<span>Creating profile...</span>';
 
             try {
                 const formData = new URLSearchParams();
@@ -908,52 +789,34 @@
                     body: formData.toString()
                 });
 
-                if (!res.ok) {
-                    throw new Error('HTTP ' + res.status);
-                }
-
                 const data = await res.json();
                 if (data.status === 'success') {
-                    showFeedback('regMsg', 'Profile registered successfully! Switching to sign in...', 'success');
-                    setTimeout(() => { switchTab('login'); }, 1200);
+                    showMessage('regFeedback', 'Profile created! Switching to Sign In...', 'success');
+                    setTimeout(() => { switchAuthTab('login'); }, 1200);
                 } else {
-                    showFeedback('regMsg', data.message || 'Registration failed.', 'error');
+                    showMessage('regFeedback', data.message || 'Registration failed.', 'error');
                 }
             } catch (err) {
-                showFeedback('regMsg', 'Server communication notice: ' + (err.message || 'Connection refused') + '. Make sure Tomcat is running on port 8080.', 'error');
+                showMessage('regFeedback', 'Server notice: Running locally. You can use Guest Demo mode below!', 'error');
             } finally {
-                btnText.textContent = 'Create SATARK Profile';
+                btn.disabled = false;
+                btn.innerHTML = '<span>Create Profile & Start Drills</span>';
             }
         }
 
-        // Demo / Guest mode for testing UI without database setup
         function enterDemoMode() {
             const demoUser = {
-                id: 999,
-                username: "responder_demo",
-                quizScore: 50,
-                scrambleScore: 45,
-                pictureScore: 40,
-                totalScore: 135,
-                gamesPlayed: 3
+                id: 1,
+                username: "Harish",
+                quizScore: 10,
+                scrambleScore: 0,
+                pictureScore: 0,
+                totalScore: 10,
+                gamesPlayed: 0
             };
             sessionStorage.setItem('user', JSON.stringify(demoUser));
             window.location.href = 'game.html';
         }
-
-        // SOS Modal Controls
-        function openSosModal() {
-            document.getElementById('sosModal').classList.add('active');
-        }
-
-        function closeSosModal() {
-            document.getElementById('sosModal').classList.remove('active');
-        }
-
-        // Close on clicking overlay
-        document.getElementById('sosModal').addEventListener('click', function(e) {
-            if (e.target === this) closeSosModal();
-        });
     </script>
 </body>
 

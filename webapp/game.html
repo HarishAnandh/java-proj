@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="SATARK Disaster Preparedness Console - Official Emergency Training Drills, Protocol Assessments, and Readiness Tracking.">
-    <title>SATARK - Disaster Preparedness & Drill Console</title>
+        content="Satark - Stay Safe, Stay Ready. Disaster safety drills, progress tracking, and emergency readiness hub.">
+    <title>Satark — Dashboard & Disaster Readiness Console</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
         rel="stylesheet">
     <style>
         /* ==========================================================
-           SATARK CONSOLE DESIGN SYSTEM - CLEAN DISASTER MANAGEMENT UI
-           Straightforward, high-contrast, uncluttered, and functional.
+           SATARK DESIGN SYSTEM - LIGHT & SMOOTH FITNESS APP UI
+           Exact match for user reference: clean, friendly, vibrant.
            ========================================================== */
         * {
             margin: 0;
@@ -23,1095 +23,1097 @@
         }
 
         :root {
-            --bg-base: #0f172a;         /* Deep slate */
-            --bg-surface: #1e293b;      /* Slate card */
-            --bg-elevated: #334155;     /* Interactive elements */
-            --border-subtle: #334155;
-            --border-strong: #475569;
+            --bg-body: #f4f7fb;
+            --bg-card: #ffffff;
+            --bg-card-subtle: #f8fafc;
+            --border-color: #e2e8f0;
+            --border-subtle: #edf2f7;
 
-            --text-main: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
+            --text-heading: #0f172a;
+            --text-body: #475569;
+            --text-muted: #94a3b8;
 
-            --emergency-red: #ef4444;
-            --emergency-red-bg: rgba(239, 68, 68, 0.12);
-            --emergency-red-border: rgba(239, 68, 68, 0.35);
-
-            --warning-amber: #f59e0b;
-            --warning-amber-bg: rgba(245, 158, 11, 0.12);
-            --warning-amber-border: rgba(245, 158, 11, 0.35);
-
-            --safe-green: #10b981;
-            --safe-green-bg: rgba(16, 185, 129, 0.12);
-            --safe-green-border: rgba(16, 185, 129, 0.35);
-
+            /* Vibrant Fitness Palette */
             --primary-blue: #2563eb;
             --primary-blue-hover: #1d4ed8;
+            --primary-blue-light: #eff6ff;
 
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 14px;
+            --accent-green: #10b981;
+            --accent-green-light: #ecfdf5;
+
+            --accent-orange: #f97316;
+            --accent-orange-light: #ffedd5;
+
+            --accent-amber: #f59e0b;
+            --accent-amber-light: #fef3c7;
+
+            --accent-purple: #8b5cf6;
+            --accent-purple-light: #f3e8ff;
+
+            --accent-red: #ef4444;
+            --accent-red-light: #fee2e2;
+
+            /* Gradients & Shadows */
+            --hero-gradient: linear-gradient(90deg, #2563eb 0%, #10b981 100%);
+            --card-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+            --card-shadow-hover: 0 10px 24px -3px rgba(15, 23, 42, 0.09), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-base);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-body);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             line-height: 1.5;
         }
 
-        /* Top Operational Bar */
-        .top-ops-bar {
-            background: #020617;
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 6px 24px;
-            font-size: 12px;
+        /* ==========================================================
+           LEFT SIDEBAR NAVIGATION
+           ========================================================== */
+        .sidebar {
+            width: 250px;
+            background: #ffffff;
+            border-right: 1px solid var(--border-subtle);
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
-            color: var(--text-secondary);
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .ops-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--safe-green);
-            font-weight: 600;
-        }
-
-        .ops-indicator {
-            width: 8px;
-            height: 8px;
-            background: var(--safe-green);
-            border-radius: 50%;
-        }
-
-        .ops-helpline {
-            display: flex;
-            gap: 16px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .ops-helpline strong {
-            color: var(--text-main);
-        }
-
-        /* Header Navigation */
-        .header-nav {
-            background: var(--bg-surface);
-            border-bottom: 1px solid var(--border-subtle);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 50;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 24px 16px;
+            transition: all 0.25s ease;
         }
 
-        .brand-link {
+        .sidebar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            color: inherit;
+            padding: 4px 8px 24px;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .brand-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--primary-blue);
-            border-radius: var(--radius-sm);
+        .brand-shield-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            color: #ffffff;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+            flex-shrink: 0;
         }
 
-        .brand-text h1 {
-            font-size: 18px;
+        .brand-text-wrap {
+            line-height: 1.15;
+        }
+
+        .brand-name {
+            font-size: 19px;
             font-weight: 800;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            color: var(--text-heading);
+            letter-spacing: -0.3px;
         }
 
-        .brand-sub {
+        .brand-subtext {
             font-size: 11px;
-            color: var(--text-secondary);
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 3px;
         }
 
-        .user-profile-controls {
+        /* Nav links */
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 20px;
+            flex: 1;
+        }
+
+        .nav-item {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-body);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.18s;
+            border: 1px solid transparent;
         }
 
-        .user-badge {
-            background: var(--bg-base);
+        .nav-item:hover {
+            background: #f8fafc;
+            color: var(--primary-blue);
+        }
+
+        .nav-item.active {
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .nav-icon {
+            font-size: 18px;
+            width: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Bottom user profile card */
+        .sidebar-user {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 10px;
+            background: #f8fafc;
+            border-radius: 14px;
             border: 1px solid var(--border-subtle);
-            padding: 6px 14px;
-            border-radius: var(--radius-sm);
+        }
+
+        .user-left {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 13px;
         }
 
-        .user-badge-name {
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .user-badge-score {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--warning-amber);
-            font-weight: 700;
-            background: var(--warning-amber-bg);
-            padding: 2px 8px;
-            border-radius: 4px;
-            border: 1px solid var(--warning-amber-border);
-        }
-
-        .btn-header-sos {
-            background: var(--emergency-red-bg);
-            border: 1px solid var(--emergency-red-border);
-            color: var(--emergency-red);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-header-sos:hover {
-            background: var(--emergency-red);
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #c084fc, #a855f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #ffffff;
+            font-weight: 800;
+            font-size: 14px;
         }
 
-        .btn-logout {
+        .user-details {
+            line-height: 1.2;
+        }
+
+        .user-name-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .user-role-label {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .btn-user-settings {
             background: transparent;
-            border: 1px solid var(--border-strong);
-            color: var(--text-secondary);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 12px;
-            font-weight: 600;
+            border: none;
+            color: var(--text-muted);
             cursor: pointer;
-            transition: all 0.2s;
+            font-size: 16px;
+            padding: 4px;
+            border-radius: 6px;
+            transition: color 0.15s;
         }
 
-        .btn-logout:hover {
-            background: var(--bg-elevated);
-            color: var(--text-main);
+        .btn-user-settings:hover {
+            color: var(--accent-red);
         }
 
-        /* Main Container */
-        .main-container {
+        /* ==========================================================
+           MAIN CONTENT AREA
+           ========================================================== */
+        .main-wrapper {
+            margin-left: 250px;
             flex: 1;
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 28px 24px;
+            padding: 32px 40px;
+            max-width: 1300px;
             display: flex;
             flex-direction: column;
             gap: 28px;
         }
 
-        /* Score Summary Strip */
-        .readiness-summary {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        /* Welcome Header */
+        .welcome-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        .welcome-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+
+        .welcome-shield-icon {
+            font-size: 26px;
+        }
+
+        .welcome-username {
+            color: var(--accent-green);
+        }
+
+        .welcome-subtitle {
+            font-size: 15px;
+            color: var(--text-body);
+            font-weight: 500;
+        }
+
+        /* ==========================================================
+           FEATURED HERO GRADIENT BANNER (LEVEL & PROGRESS BAR)
+           ========================================================== */
+        .hero-progress-banner {
+            background: var(--hero-gradient);
+            border-radius: var(--radius-lg);
+            padding: 26px 32px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.28);
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hp-hero-box {
+            display: flex;
+            align-items: center;
             gap: 16px;
         }
 
-        .readiness-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
+        .hp-trophy-circle {
+            width: 58px;
+            height: 58px;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(8px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            position: relative;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hp-level-tag {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #f59e0b;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffffff;
+        }
+
+        .hp-title-text {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .hp-points-text {
+            font-size: 14px;
+            opacity: 0.95;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Center progress bar inside hero */
+        .hp-progress-center {
+            flex: 1;
+            min-width: 260px;
+            max-width: 520px;
+        }
+
+        .hp-progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            opacity: 0.95;
+        }
+
+        .hp-progress-track {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .hp-progress-fill {
+            height: 100%;
+            width: 4%;
+            background: #0f172a;
+            border-radius: 9999px;
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hp-progress-subtext {
+            font-size: 12px;
+            opacity: 0.85;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .hp-keep-going-btn {
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 800;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .hp-keep-going-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* ==========================================================
+           4 STAT / METRIC CARDS
+           ========================================================== */
+        .stat-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 16px 20px;
+            padding: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--card-shadow);
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .sc-left {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
-        .readiness-card.featured {
-            border-left: 4px solid var(--warning-amber);
-        }
-
-        .rc-label {
-            font-size: 12px;
+        .sc-title {
+            font-size: 13px;
             font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .rc-value {
-            font-size: 26px;
-            font-weight: 800;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-main);
-        }
-
-        .rc-meta {
-            font-size: 11px;
             color: var(--text-muted);
         }
 
-        /* Section Headings */
-        .section-heading-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 14px;
+        .sc-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
         }
 
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
+        .sc-icon-square {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .sc-icon-square.drills {
+            background: var(--accent-orange-light);
+            color: var(--accent-orange);
+        }
+
+        .sc-icon-square.level {
+            background: var(--accent-purple-light);
+            color: var(--accent-purple);
+        }
+
+        .sc-icon-square.points {
+            background: var(--accent-amber-light);
+            color: var(--accent-amber);
+        }
+
+        .sc-icon-square.safety {
+            background: var(--accent-green-light);
+            color: var(--accent-green);
+        }
+
+        /* ==========================================================
+           BOTTOM SPLIT: QUICK ACTIONS & EMERGENCY ALERTS
+           ========================================================== */
+        .bottom-sections-split {
+            display: grid;
+            grid-template-columns: 1.35fr 0.85fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .section-header-row {
             display: flex;
             align-items: center;
             gap: 8px;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-heading);
+            margin-bottom: 16px;
         }
 
-        /* Drill Modules Grid */
-        .drills-grid {
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .qa-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            min-height: 140px;
+        }
+
+        .qa-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: #cbd5e1;
+        }
+
+        .qa-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .qa-icon-wrap.learn {
+            background: var(--accent-green-light);
+            color: var(--accent-green);
+        }
+
+        .qa-icon-wrap.drill {
+            background: var(--accent-orange-light);
+            color: var(--accent-orange);
+        }
+
+        .qa-icon-wrap.emergency {
+            background: var(--accent-red-light);
+            color: var(--accent-red);
+        }
+
+        .qa-icon-wrap.support {
+            background: var(--accent-purple-light);
+            color: var(--accent-purple);
+        }
+
+        .qa-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 4px;
+        }
+
+        .qa-desc {
+            font-size: 12px;
+            color: var(--text-body);
+            line-height: 1.45;
+            margin-bottom: 12px;
+        }
+
+        .qa-play-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1.5px solid var(--primary-blue);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            margin-top: auto;
+            transition: all 0.2s;
+        }
+
+        .qa-card:hover .qa-play-btn {
+            background: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        /* Emergency Alerts Card */
+        .emergency-alerts-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .alert-item-box {
+            border: 1px solid #fee2e2;
+            border-left: 4px solid var(--accent-red);
+            background: #fffdfd;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 14px;
+        }
+
+        .alert-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .alert-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        .alert-badge-level {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: var(--primary-blue-light);
+            color: var(--primary-blue);
+            border: 1px solid #dbeafe;
+        }
+
+        .alert-body-text {
+            font-size: 13px;
+            color: var(--text-body);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .alert-timestamp {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ==========================================================
+           INTERACTIVE VIEWS (DRILLS, LEARN, EMERGENCY, PROFILE, CHAT)
+           ========================================================== */
+        .subview-container {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .subview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .btn-subview-back {
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            color: var(--text-heading);
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-subview-back:hover {
+            background: #e2e8f0;
+        }
+
+        /* Practice Drills Selection in subview */
+        .drills-selection-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        .drill-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
+        .drill-pick-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 16px;
-            transition: border-color 0.2s;
+            box-shadow: var(--card-shadow);
+            transition: all 0.2s;
         }
 
-        .drill-card:hover {
-            border-color: var(--border-strong);
+        .drill-pick-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
         }
 
-        .drill-tag {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: var(--radius-sm);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .drill-tag.protocol {
-            background: var(--emergency-red-bg);
-            color: var(--emergency-red);
-            border: 1px solid var(--emergency-red-border);
-        }
-
-        .drill-tag.terminology {
-            background: var(--warning-amber-bg);
-            color: var(--warning-amber);
-            border: 1px solid var(--warning-amber-border);
-        }
-
-        .drill-tag.decision {
-            background: var(--safe-green-bg);
-            color: var(--safe-green);
-            border: 1px solid var(--safe-green-border);
-        }
-
-        .drill-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 6px;
-        }
-
-        .drill-card p {
-            font-size: 13px;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .drill-specs {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding-top: 10px;
-            border-top: 1px solid var(--border-subtle);
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .drill-spec-item {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .drill-spec-item strong {
-            color: var(--text-main);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .btn-launch-drill {
+        .btn-start-drill {
             background: var(--primary-blue);
             color: #ffffff;
             border: none;
-            padding: 10px 16px;
-            border-radius: var(--radius-sm);
+            padding: 12px;
+            border-radius: 10px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.2s;
+            margin-top: 16px;
+            transition: all 0.2s;
         }
 
-        .btn-launch-drill:hover {
+        .btn-start-drill:hover {
             background: var(--primary-blue-hover);
         }
 
-        /* Two Column Layout for Leaderboard & Reference Guide */
-        .bottom-split {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 24px;
-            align-items: start;
-        }
-
-        /* Leaderboard Panel */
-        .leaderboard-panel {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-        }
-
-        .table-header-box {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-subtle);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #141f36;
-        }
-
-        .table-header-box h3 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .table-refresh-tag {
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-
-        .leaderboard-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        .leaderboard-table th {
-            text-align: left;
-            padding: 10px 16px;
-            background: var(--bg-base);
-            color: var(--text-secondary);
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .leaderboard-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-subtle);
-            color: var(--text-main);
-        }
-
-        .leaderboard-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .rank-num {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-
-        .rank-num.top1 { color: #f59e0b; }
-        .rank-num.top2 { color: #cbd5e1; }
-        .rank-num.top3 { color: #b45309; }
-
-        .player-name-cell {
-            font-weight: 600;
-        }
-
-        .score-cell {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            color: var(--warning-amber);
-        }
-
-        .badge-level {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            display: inline-block;
-        }
-
-        .badge-level.advanced {
-            background: var(--safe-green-bg);
-            color: var(--safe-green);
-            border: 1px solid var(--safe-green-border);
-        }
-
-        .badge-level.intermediate {
-            background: var(--warning-amber-bg);
-            color: var(--warning-amber);
-            border: 1px solid var(--warning-amber-border);
-        }
-
-        .badge-level.basic {
-            background: var(--bg-elevated);
-            color: var(--text-secondary);
-        }
-
-        /* Survival Kit Reference Panel */
-        .survival-panel {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 20px;
-        }
-
-        .survival-panel h3 {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 14px;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .survival-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-size: 13px;
-        }
-
-        .survival-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            background: var(--bg-base);
-            padding: 10px 12px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .si-check {
-            color: var(--safe-green);
-            font-size: 14px;
-            margin-top: 2px;
-        }
-
-        .si-text strong {
-            display: block;
-            color: var(--text-main);
-            font-size: 13px;
-        }
-
-        .si-text span {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        /* ==========================================================
-           ACTIVE DRILL ARENA (QUESTION & EXERCISE VIEWS)
-           ========================================================== */
-        #gameContainer {
-            display: none;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-        }
-
-        .drill-arena-header {
-            background: #141f36;
-            padding: 16px 24px;
-            border-bottom: 1px solid var(--border-subtle);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .drill-title-group {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-abort-drill {
-            background: transparent;
-            border: 1px solid var(--border-strong);
-            color: var(--text-secondary);
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .btn-abort-drill:hover {
-            background: var(--bg-elevated);
-            color: var(--text-main);
-        }
-
-        .drill-active-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .drill-hud {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-        }
-
-        .hud-timer {
-            background: var(--emergency-red-bg);
-            border: 1px solid var(--emergency-red-border);
-            color: var(--emergency-red);
-            padding: 4px 10px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-        }
-
-        .hud-score {
-            background: var(--warning-amber-bg);
-            border: 1px solid var(--warning-amber-border);
-            color: var(--warning-amber);
-            padding: 4px 10px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-        }
-
-        .hud-progress {
-            color: var(--text-secondary);
-        }
-
-        /* Drill Body */
-        .drill-arena-body {
-            padding: 28px 24px;
+        /* Active Drill Arena (Quiz / Scramble / Decision) */
+        .active-drill-box {
             max-width: 800px;
             margin: 0 auto;
-            width: 100%;
         }
 
-        .incident-card {
-            background: var(--bg-base);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-md);
-            padding: 24px;
+        .drill-progress-bar-wrap {
             margin-bottom: 24px;
         }
 
-        .incident-badge {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--warning-amber);
-            margin-bottom: 8px;
+        .dp-labels {
             display: flex;
-            align-items: center;
-            gap: 6px;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 8px;
         }
 
-        .incident-prompt {
+        .dp-track {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .dp-fill {
+            height: 100%;
+            background: var(--primary-blue);
+            border-radius: 9999px;
+            width: 10%;
+            transition: width 0.3s ease;
+        }
+
+        .question-card-light {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .question-text-light {
             font-size: 18px;
             font-weight: 700;
+            color: var(--text-heading);
             line-height: 1.4;
-            color: var(--text-main);
         }
 
-        /* Quiz Options */
-        .options-list {
+        .options-list-light {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-bottom: 20px;
         }
 
-        .option-button {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            padding: 14px 18px;
-            color: var(--text-main);
+        .opt-btn-light {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 20px;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--text-heading);
             text-align: left;
             cursor: pointer;
-            transition: all 0.15s;
+            transition: all 0.18s;
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .option-button:hover:not(:disabled) {
+        .opt-btn-light:hover:not(:disabled) {
             border-color: var(--primary-blue);
-            background: var(--bg-elevated);
+            background: #f8fafc;
         }
 
-        .opt-letter {
-            width: 26px;
-            height: 26px;
-            border-radius: 4px;
-            background: var(--bg-base);
-            border: 1px solid var(--border-strong);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            flex-shrink: 0;
+        .opt-btn-light.correct {
+            background: var(--accent-green-light);
+            border-color: var(--accent-green);
+            color: #065f46;
         }
 
-        .option-button.correct {
-            background: var(--safe-green-bg);
-            border-color: var(--safe-green);
-            color: #ffffff;
-        }
-
-        .option-button.correct .opt-letter {
-            background: var(--safe-green);
-            color: #ffffff;
-            border-color: var(--safe-green);
-        }
-
-        .option-button.incorrect {
-            background: var(--emergency-red-bg);
-            border-color: var(--emergency-red);
-            color: #ffffff;
-        }
-
-        .option-button.incorrect .opt-letter {
-            background: var(--emergency-red);
-            color: #ffffff;
-            border-color: var(--emergency-red);
+        .opt-btn-light.incorrect {
+            background: var(--accent-red-light);
+            border-color: var(--accent-red);
+            color: #991b1b;
         }
 
         /* Scramble View */
-        .scramble-box {
-            background: var(--bg-base);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .scramble-letters {
+        .scramble-letters-light {
             display: flex;
-            justify-content: center;
             gap: 8px;
-            margin: 16px 0;
+            justify-content: center;
+            margin: 20px 0;
             flex-wrap: wrap;
         }
 
-        .letter-tile {
+        .letter-chip {
             width: 44px;
             height: 48px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-sm);
-            font-size: 20px;
-            font-weight: 800;
+            background: #ffffff;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-main);
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-heading);
             font-family: 'JetBrains Mono', monospace;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         }
 
-        .scramble-hint {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .scramble-input-group {
-            display: flex;
-            gap: 10px;
-            max-width: 440px;
-            margin: 0 auto;
-        }
-
-        .scramble-input {
-            flex: 1;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-strong);
-            padding: 12px 16px;
-            border-radius: var(--radius-sm);
+        .scramble-input-light {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 18px;
+            font-size: 18px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
-            text-transform: uppercase;
-            color: var(--text-main);
-            letter-spacing: 2px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
             text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             outline: none;
+            margin: 0 auto;
+            display: block;
         }
 
-        .scramble-input:focus {
+        .scramble-input-light:focus {
             border-color: var(--primary-blue);
         }
 
-        .btn-submit-answer {
+        /* Rationale Card */
+        .rationale-card-light {
+            display: none;
+            background: var(--accent-green-light);
+            border: 1px solid #a7f3d0;
+            border-left: 5px solid var(--accent-green);
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-top: 16px;
+        }
+
+        .rationale-card-light.show {
+            display: block;
+        }
+
+        .rationale-card-light.incorrect {
+            background: var(--accent-red-light);
+            border-color: #fecaca;
+            border-left-color: var(--accent-red);
+        }
+
+        .btn-proceed-light {
+            display: none;
             background: var(--primary-blue);
             color: #ffffff;
             border: none;
-            padding: 12px 20px;
-            border-radius: var(--radius-sm);
+            padding: 13px 24px;
+            border-radius: 10px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
+            width: 100%;
+            margin-top: 16px;
         }
 
-        /* Situation/Picture Challenge View */
-        .scenario-box {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 20px;
+        .btn-proceed-light.show {
+            display: block;
         }
 
-        .scenario-visual-header {
-            background: var(--bg-base);
-            border: 1px solid var(--border-strong);
+        /* Learn View Cards */
+        .learn-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .learn-topic-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
+            padding: 22px;
+            box-shadow: var(--card-shadow);
         }
 
-        .scenario-icon {
-            font-size: 44px;
-            background: var(--bg-surface);
-            padding: 12px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .scenario-desc h4 {
+        .learn-topic-card h4 {
             font-size: 16px;
             font-weight: 700;
-            color: var(--text-main);
-            line-height: 1.4;
+            color: var(--text-heading);
+            margin: 10px 0 6px;
         }
 
-        .scenario-options-grid {
+        .learn-topic-card p {
+            font-size: 13px;
+            color: var(--text-body);
+            line-height: 1.5;
+        }
+
+        /* Emergency Hub Cards */
+        .helpline-grid-light {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .hl-card-light {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .hl-num-bold {
+            font-size: 24px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-red);
+        }
+
+        /* Go Bag Checklist */
+        .checklist-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
-        .scenario-opt-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            padding: 16px;
-            cursor: pointer;
+        .check-item-light {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
-            text-align: left;
-            transition: all 0.15s;
-            color: var(--text-main);
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .scenario-opt-card:hover:not(:disabled) {
-            border-color: var(--primary-blue);
-            background: var(--bg-elevated);
-        }
-
-        .scenario-opt-card.correct {
-            background: var(--safe-green-bg);
-            border-color: var(--safe-green);
-        }
-
-        .scenario-opt-card.incorrect {
-            background: var(--emergency-red-bg);
-            border-color: var(--emergency-red);
-        }
-
-        /* Life Safety Rationale Card */
-        .rationale-card {
-            display: none;
-            background: #141f36;
-            border: 1px solid var(--border-strong);
-            border-left: 4px solid var(--safe-green);
-            padding: 16px 20px;
-            border-radius: var(--radius-sm);
-            margin-top: 16px;
-        }
-
-        .rationale-card.show {
-            display: block;
-        }
-
-        .rationale-card.incorrect {
-            border-left-color: var(--emergency-red);
-        }
-
-        .rationale-title {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            color: var(--safe-green);
-        }
-
-        .rationale-card.incorrect .rationale-title {
-            color: var(--emergency-red);
-        }
-
-        .rationale-text {
-            font-size: 13px;
-            color: #e2e8f0;
-            line-height: 1.5;
-        }
-
-        .btn-next-action {
-            display: none;
-            background: var(--primary-blue);
-            color: #ffffff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: var(--radius-sm);
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 16px;
-            width: 100%;
-        }
-
-        .btn-next-action.show {
-            display: block;
-        }
-
-        /* Debrief / Results Card */
-        .debrief-card {
-            background: var(--bg-base);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-md);
-            padding: 32px 24px;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .debrief-status {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--safe-green);
-            margin-bottom: 8px;
-        }
-
-        .debrief-title {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .debrief-score-box {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            margin: 20px 0;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .debrief-metric-num {
-            font-size: 28px;
-            font-weight: 800;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--warning-amber);
-        }
-
-        .debrief-metric-label {
-            font-size: 11px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            text-transform: uppercase;
-        }
-
-        .debrief-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .btn-debrief-primary {
-            background: var(--primary-blue);
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: var(--radius-sm);
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
         }
 
-        .btn-debrief-secondary {
-            background: transparent;
-            border: 1px solid var(--border-strong);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: var(--radius-sm);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
+        .check-item-light input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-green);
         }
 
-        /* Modal SOS */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-box {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-strong);
-            border-radius: var(--radius-md);
-            max-width: 580px;
-            width: 100%;
-            padding: 24px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            border-bottom: 1px solid var(--border-subtle);
-            padding-bottom: 12px;
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--emergency-red);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-close-modal {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .helpline-table {
+        /* Leaderboard Table Light */
+        .leaderboard-table-light {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
-            margin-bottom: 16px;
-        }
-
-        .helpline-table th,
-        .helpline-table td {
-            padding: 8px 12px;
-            border: 1px solid var(--border-subtle);
-            text-align: left;
-        }
-
-        .helpline-table th {
-            background: var(--bg-base);
-            color: var(--text-secondary);
-        }
-
-        .helpline-table td strong {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--emergency-red);
             font-size: 14px;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .readiness-summary {
+        .leaderboard-table-light th {
+            text-align: left;
+            padding: 12px 18px;
+            background: #f8fafc;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 1.5px solid var(--border-color);
+        }
+
+        .leaderboard-table-light td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-heading);
+            font-weight: 500;
+        }
+
+        /* AI Chat view */
+        .chat-box-light {
+            max-width: 650px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 480px;
+        }
+
+        .chat-history {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: #f8fafc;
+        }
+
+        .chat-msg {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 13.5px;
+            line-height: 1.45;
+        }
+
+        .chat-msg.bot {
+            background: #ffffff;
+            color: var(--text-heading);
+            border: 1px solid var(--border-color);
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            background: var(--primary-blue);
+            color: #ffffff;
+            align-self: flex-end;
+        }
+
+        .chat-input-bar {
+            padding: 14px;
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-bar input {
+            flex: 1;
+            padding: 10px 16px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chat-input-bar button {
+            background: var(--primary-blue);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .stat-cards-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .drills-grid {
+            .bottom-sections-split {
                 grid-template-columns: 1fr;
             }
-            .bottom-split {
+            .drills-selection-grid {
                 grid-template-columns: 1fr;
             }
-            .scenario-options-grid {
+            .learn-cards-grid {
                 grid-template-columns: 1fr;
+            }
+            .helpline-grid-light {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .main-wrapper {
+                margin-left: 0;
+                padding: 20px 16px;
+            }
+            .quick-actions-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-progress-banner {
+                flex-direction: column;
+                align-items: stretch;
             }
         }
     </style>
@@ -1119,349 +1121,524 @@
 
 <body>
 
-    <!-- Operational Top Alert Strip -->
-    <div class="top-ops-bar">
-        <div class="ops-status">
-            <span class="ops-indicator"></span>
-            <span>SATARK NATIONAL DISASTER MONITORING ACTIVE &bull; ALL CHANNELS OPERATIONAL</span>
-        </div>
-        <div class="ops-helpline">
-            <span>NATIONAL SOS: <strong style="color: var(--emergency-red);">112</strong></span>
-            <span>NDMA RELIEF: <strong>1078</strong></span>
-            <span>DISASTER SEOC: <strong>1070</strong></span>
-        </div>
-    </div>
-
-    <!-- Navigation Header -->
-    <header class="header-nav">
-        <a href="index.html" class="brand-link">
-            <div class="brand-icon">🛡️</div>
-            <div class="brand-text">
-                <h1>SATARK <span style="font-size: 11px; background: var(--bg-elevated); padding: 2px 6px; border-radius: 4px; color: var(--text-secondary);">सतर्क</span></h1>
-                <div class="brand-sub">Disaster Operations & Preparedness Console</div>
-            </div>
-        </a>
-
-        <div class="user-profile-controls">
-            <div class="user-badge">
-                <span class="user-badge-name" id="navUsername">Citizen</span>
-                <span>Score:</span>
-                <span class="user-badge-score" id="navScore">0</span>
-            </div>
-            <button class="btn-header-sos" onclick="openSosModal()">🚨 SOS HELPLINES</button>
-            <button class="btn-logout" onclick="logout()">Sign Out</button>
-        </div>
-    </header>
-
-    <!-- Main Container -->
-    <main class="main-container">
-
-        <!-- DASHBOARD VIEW -->
-        <div id="dashboard">
-
-            <!-- Score Summary Cards -->
-            <div class="readiness-summary">
-                <div class="readiness-card featured">
-                    <span class="rc-label">Total Readiness Index</span>
-                    <span class="rc-value" id="cardTotalScore">0</span>
-                    <span class="rc-meta" id="cardRankRating">Status: Evaluating</span>
+    <!-- ==========================================================
+         LEFT SIDEBAR
+         ========================================================== -->
+    <aside class="sidebar">
+        <div>
+            <!-- Brand -->
+            <a href="#" class="sidebar-brand" onclick="switchNav('dashboard')">
+                <div class="brand-shield-icon">🛡️</div>
+                <div class="brand-text-wrap">
+                    <div class="brand-name">Satark</div>
+                    <div class="brand-subtext">Stay Safe, Stay Ready</div>
                 </div>
-                <div class="readiness-card">
-                    <span class="rc-label">Protocol Quiz Drills</span>
-                    <span class="rc-value" id="cardQuizScore">0</span>
-                    <span class="rc-meta">10 pts / correct action</span>
-                </div>
-                <div class="readiness-card">
-                    <span class="rc-label">Emergency Scrambles</span>
-                    <span class="rc-value" id="cardScrambleScore">0</span>
-                    <span class="rc-meta">15 pts / term mastered</span>
-                </div>
-                <div class="readiness-card">
-                    <span class="rc-label">Incident Challenges</span>
-                    <span class="rc-value" id="cardPictureScore">0</span>
-                    <span class="rc-meta">10 pts / safe decision</span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="nav-menu">
+                <a class="nav-item active" id="navDashboard" onclick="switchNav('dashboard')">
+                    <span class="nav-icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+                <a class="nav-item" id="navLearn" onclick="switchNav('learn')">
+                    <span class="nav-icon">📖</span>
+                    <span>Learn</span>
+                </a>
+                <a class="nav-item" id="navDrills" onclick="switchNav('drills')">
+                    <span class="nav-icon">🎯</span>
+                    <span>Practice Drills</span>
+                </a>
+                <a class="nav-item" id="navEmergency" onclick="switchNav('emergency')">
+                    <span class="nav-icon">⚠️</span>
+                    <span>Emergency Hub</span>
+                </a>
+                <a class="nav-item" id="navChat" onclick="switchNav('chat')">
+                    <span class="nav-icon">💬</span>
+                    <span>Support Chat</span>
+                </a>
+                <a class="nav-item" id="navProfile" onclick="switchNav('profile')">
+                    <span class="nav-icon">👤</span>
+                    <span>My Profile</span>
+                </a>
+                <a class="nav-item" id="navAdmin" onclick="switchNav('admin')">
+                    <span class="nav-icon">🛡️</span>
+                    <span>Admin Panel</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- User Profile Card at Bottom of Sidebar -->
+        <div class="sidebar-user">
+            <div class="user-left">
+                <div class="user-avatar" id="sidebarAvatar">H</div>
+                <div class="user-details">
+                    <div class="user-name-label" id="sidebarUsername">Harish</div>
+                    <div class="user-role-label" id="sidebarRole">New Responder</div>
                 </div>
             </div>
+            <button class="btn-user-settings" title="Sign Out" onclick="logout()">⚙️</button>
+        </div>
+    </aside>
 
-            <!-- Drill Modules Selection -->
-            <div style="margin-top: 28px;">
-                <div class="section-heading-bar">
-                    <div class="section-title">
-                        <span>🎯 Certified Disaster Safety Drills</span>
+    <!-- ==========================================================
+         MAIN CONTENT AREA
+         ========================================================== -->
+    <main class="main-wrapper">
+
+        <!-- ======================================================
+             VIEW 1: MAIN DASHBOARD (EXACT MATCH FOR USER IMAGE)
+             ====================================================== -->
+        <div id="viewDashboard">
+
+            <!-- Welcome Header -->
+            <div class="welcome-header">
+                <div class="welcome-title-wrap">
+                    <span class="welcome-shield-icon">🛡️</span>
+                    <span>Welcome, <span class="welcome-username" id="headerWelcomeName">Harish</span>!</span>
+                </div>
+                <p class="welcome-subtitle">Ready to learn and practice emergency safety?</p>
+            </div>
+
+            <!-- Featured Hero Gradient Banner -->
+            <div class="hero-progress-banner" style="margin-top: 14px;">
+                <div class="hp-hero-box">
+                    <div class="hp-trophy-circle">
+                        🏆
+                        <div class="hp-level-tag" id="heroLevelTag">1</div>
                     </div>
-                    <span style="font-size: 12px; color: var(--text-muted);">Scores are synchronized with SATARK Database</span>
+                    <div>
+                        <div class="hp-title-text" id="heroTierName">Level 1 Hero</div>
+                        <div class="hp-points-text" id="heroPointsEarned">10 Points Earned</div>
+                    </div>
                 </div>
 
-                <div class="drills-grid">
+                <div class="hp-progress-center">
+                    <div class="hp-progress-labels">
+                        <span id="heroProgressToLevel">Progress to Level 2</span>
+                        <span id="heroProgressPercent">4%</span>
+                    </div>
+                    <div class="hp-progress-track">
+                        <div class="hp-progress-fill" id="heroProgressFill"></div>
+                    </div>
+                    <div class="hp-progress-subtext" id="heroPointsUntilNext">240 points until next level</div>
+                </div>
+
+                <button class="hp-keep-going-btn" onclick="switchNav('drills')">
+                    <span>⚡</span>
+                    <span>Keep Going!</span>
+                </button>
+            </div>
+
+            <!-- 4 Stat / Metric Cards -->
+            <div class="stat-cards-grid" style="margin-top: 24px;">
+                <!-- 1. Drills Completed -->
+                <div class="stat-card">
+                    <div class="sc-left">
+                        <span class="sc-title">Drills Completed</span>
+                        <span class="sc-value" id="statDrillsCount">0</span>
+                    </div>
+                    <div class="sc-icon-square drills">🎯</div>
+                </div>
+
+                <!-- 2. Current Level -->
+                <div class="stat-card">
+                    <div class="sc-left">
+                        <span class="sc-title">Current Level</span>
+                        <span class="sc-value" id="statCurrentLevel">1</span>
+                    </div>
+                    <div class="sc-icon-square level">🎗️</div>
+                </div>
+
+                <!-- 3. Total Points -->
+                <div class="stat-card">
+                    <div class="sc-left">
+                        <span class="sc-title">Total Points</span>
+                        <span class="sc-value" id="statTotalPoints">10</span>
+                    </div>
+                    <div class="sc-icon-square points">⭐</div>
+                </div>
+
+                <!-- 4. Safety Score -->
+                <div class="stat-card">
+                    <div class="sc-left">
+                        <span class="sc-title">Safety Score</span>
+                        <span class="sc-value" id="statSafetyScore">20%</span>
+                    </div>
+                    <div class="sc-icon-square safety">📈</div>
+                </div>
+            </div>
+
+            <!-- Bottom Split: Quick Actions & Emergency Alerts -->
+            <div class="bottom-sections-split" style="margin-top: 28px;">
+
+                <!-- Quick Actions (2x2 Grid) -->
+                <div>
+                    <div class="section-header-row">
+                        <span>⚡</span>
+                        <span>Quick Actions</span>
+                    </div>
+
+                    <div class="quick-actions-grid">
+                        <!-- Action 1: Start Learning -->
+                        <div class="qa-card" onclick="switchNav('learn')">
+                            <div>
+                                <div class="qa-icon-wrap learn">📖</div>
+                                <div class="qa-title">Start Learning</div>
+                                <div class="qa-desc">Learn about different disasters and how to stay safe</div>
+                            </div>
+                            <div class="qa-play-btn">▷</div>
+                        </div>
+
+                        <!-- Action 2: Practice Drill -->
+                        <div class="qa-card" onclick="switchNav('drills')">
+                            <div>
+                                <div class="qa-icon-wrap drill">🎯</div>
+                                <div class="qa-title">Practice Drill</div>
+                                <div class="qa-desc">Practice emergency responses and earn points</div>
+                            </div>
+                            <div class="qa-play-btn">▷</div>
+                        </div>
+
+                        <!-- Action 3: Emergency Info -->
+                        <div class="qa-card" onclick="switchNav('emergency')">
+                            <div>
+                                <div class="qa-icon-wrap emergency">⚠️</div>
+                                <div class="qa-title">Emergency Info</div>
+                                <div class="qa-desc">Quick access to emergency contacts and alerts</div>
+                            </div>
+                            <div class="qa-play-btn">▷</div>
+                        </div>
+
+                        <!-- Action 4: Get Support -->
+                        <div class="qa-card" onclick="switchNav('chat')">
+                            <div>
+                                <div class="qa-icon-wrap support">💬</div>
+                                <div class="qa-title">Get Support</div>
+                                <div class="qa-desc">Talk to our helpful AI assistant for emotional support</div>
+                            </div>
+                            <div class="qa-play-btn">▷</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Alerts Panel -->
+                <div>
+                    <div class="section-header-row">
+                        <span>⚠️</span>
+                        <span>Emergency Alerts</span>
+                    </div>
+
+                    <div class="emergency-alerts-card">
+                        <div class="alert-item-box">
+                            <div class="alert-top">
+                                <div class="alert-title-row">
+                                    <span>ℹ️</span>
+                                    <span>Weather Advisory</span>
+                                </div>
+                                <span class="alert-badge-level">LOW</span>
+                            </div>
+                            <p class="alert-body-text">
+                                Light rain expected in your area. Stay indoors and avoid unnecessary travel.
+                            </p>
+                            <div class="alert-timestamp" id="liveAlertTime">Sep 13, 2:55 AM</div>
+                        </div>
+
+                        <div style="margin-top: 16px; padding: 12px; background: #f8fafc; border-radius: 10px; font-size: 12px; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between;">
+                            <span>Active Monitoring: <strong>Level 1 (All Clear)</strong></span>
+                            <span style="color: var(--accent-green); font-weight: 700;">● Online</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ======================================================
+             VIEW 2: PRACTICE DRILLS ARENA
+             ====================================================== -->
+        <div id="viewDrills" class="subview-container">
+            <div class="subview-header">
+                <div>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Practice Emergency Drills</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Earn points, build muscle memory, and unlock higher safety tiers.</p>
+                </div>
+                <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
+            </div>
+
+            <!-- Drill Pick Screen -->
+            <div id="drillSelectionScreen">
+                <div class="drills-selection-grid">
                     <!-- Drill 1: Quiz -->
-                    <div class="drill-card">
+                    <div class="drill-pick-card">
                         <div>
-                            <span class="drill-tag protocol">Assessment 01 &bull; Protocols</span>
-                            <h3>Disaster Safety Protocol Quiz</h3>
-                            <p>Multiple-choice evaluation of official life-safety directives covering earthquakes, cyclones, structural fires, floods, and hazardous materials.</p>
+                            <div class="qa-icon-wrap learn" style="width: 50px; height: 50px; font-size: 24px;">🧠</div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Safety Protocol Quiz</h3>
+                            <p style="font-size: 13px; color: var(--text-body); line-height: 1.5;">10 multiple-choice scenarios covering earthquakes, fires, tsunamis, and floods with instant feedback.</p>
+                            <div style="margin-top: 14px; font-size: 12px; font-weight: 600; color: var(--primary-blue);">+10 Points / Correct Answer</div>
                         </div>
-                        <div class="drill-specs">
-                            <div class="drill-spec-item">
-                                <span>Scenario Count:</span>
-                                <strong>10 Incidents</strong>
-                            </div>
-                            <div class="drill-spec-item">
-                                <span>Time Allotted:</span>
-                                <strong>25s / Question</strong>
-                            </div>
-                            <div class="drill-spec-item">
-                                <span>Passing Standard:</span>
-                                <strong>70% Accuracy</strong>
-                            </div>
-                        </div>
-                        <button class="btn-launch-drill" onclick="startDrill('quiz')">
-                            <span>▶</span>
-                            <span>Begin Protocol Assessment</span>
-                        </button>
+                        <button class="btn-start-drill" onclick="launchActiveDrill('quiz')">Start Quiz Drill</button>
                     </div>
 
                     <!-- Drill 2: Scramble -->
-                    <div class="drill-card">
+                    <div class="drill-pick-card">
                         <div>
-                            <span class="drill-tag terminology">Assessment 02 &bull; Terminology</span>
-                            <h3>Emergency Codes & Scramble</h3>
-                            <p>Decipher high-priority disaster management terminology, early warning metrics, evacuation codes, and seismic concepts against the clock.</p>
+                            <div class="qa-icon-wrap drill" style="width: 50px; height: 50px; font-size: 24px;">🔤</div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Word Scramble</h3>
+                            <p style="font-size: 13px; color: var(--text-body); line-height: 1.5;">Unscramble vital emergency terminology and early warning codes with disaster clues.</p>
+                            <div style="margin-top: 14px; font-size: 12px; font-weight: 600; color: var(--accent-orange);">+15 Points / Word Solved</div>
                         </div>
-                        <div class="drill-specs">
-                            <div class="drill-spec-item">
-                                <span>Vocabulary Count:</span>
-                                <strong>10 Concepts</strong>
-                            </div>
-                            <div class="drill-spec-item">
-                                <span>Time Allotted:</span>
-                                <strong>30s / Word</strong>
-                            </div>
-                            <div class="drill-spec-item">
-                                <span>Scoring Value:</span>
-                                <strong>15 pts / Word</strong>
-                            </div>
-                        </div>
-                        <button class="btn-launch-drill" onclick="startDrill('scramble')">
-                            <span>▶</span>
-                            <span>Begin Terminology Drill</span>
-                        </button>
+                        <button class="btn-start-drill" style="background: var(--accent-orange);" onclick="launchActiveDrill('scramble')">Start Scramble Drill</button>
                     </div>
 
-                    <!-- Drill 3: Picture / Situation Challenge -->
-                    <div class="drill-card">
+                    <!-- Drill 3: Decision Challenge -->
+                    <div class="drill-pick-card">
                         <div>
-                            <span class="drill-tag decision">Assessment 03 &bull; Incident Matrix</span>
-                            <h3>Critical Incident Decision Drill</h3>
-                            <p>Evaluate sudden emergency situations and identify the most critical immediate life-preserving action under real disaster conditions.</p>
+                            <div class="qa-icon-wrap emergency" style="width: 50px; height: 50px; font-size: 24px;">🎯</div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Incident Decision Matrix</h3>
+                            <p style="font-size: 13px; color: var(--text-body); line-height: 1.5;">Evaluate sudden crisis scenarios and make the single most life-preserving tactical decision.</p>
+                            <div style="margin-top: 14px; font-size: 12px; font-weight: 600; color: var(--accent-green);">+10 Points / Safe Decision</div>
                         </div>
-                        <div class="drill-specs">
-                            <div class="drill-spec-item">
-                                <span>Situation Count:</span>
-                                <strong>10 Scenarios</strong>
-                            </div>
-                            <div class="drill-spec-item">
-                                <span>Time Allotted:</span>
-                                <strong>20s / Decision</strong>
-                            </div>
-                            <div class="drill-spec-item">
-                                <span>Scoring Value:</span>
-                                <strong>10 pts / Action</strong>
-                            </div>
-                        </div>
-                        <button class="btn-launch-drill" onclick="startDrill('picture')">
-                            <span>▶</span>
-                            <span>Begin Incident Challenge</span>
-                        </button>
+                        <button class="btn-start-drill" style="background: var(--accent-green);" onclick="launchActiveDrill('picture')">Start Decision Drill</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Two-Column Bottom Strip: Leaderboard & Survival Guide -->
-            <div class="bottom-split" style="margin-top: 32px;">
-
-                <!-- National Leaderboard -->
-                <div class="leaderboard-panel">
-                    <div class="table-header-box">
-                        <h3>🏆 National Community Readiness Board</h3>
-                        <span class="table-refresh-tag">Top Certified Responders</span>
+            <!-- Active Drill Play Area -->
+            <div id="drillPlayArea" style="display: none;" class="active-drill-box">
+                <div class="drill-progress-bar-wrap">
+                    <div class="dp-labels">
+                        <span id="activeDrillProgressText">Question 1 of 10</span>
+                        <span id="activeDrillTimerText" style="color: var(--accent-orange); font-family: 'JetBrains Mono', monospace;">⏱️ 25s</span>
                     </div>
-                    <table class="leaderboard-table">
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Responder ID</th>
-                                <th>Drills Done</th>
-                                <th>Readiness Index</th>
-                                <th>Tier</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leaderboardRows">
-                            <tr>
-                                <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading leaderboard data...</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="dp-track">
+                        <div class="dp-fill" id="activeDrillProgressFill"></div>
+                    </div>
                 </div>
 
-                <!-- Emergency Go-Bag Reference -->
-                <div class="survival-panel">
-                    <h3>🎒 Essential 72-Hour Survival Go-Bag</h3>
-                    <ul class="survival-list">
-                        <li class="survival-item">
-                            <span class="si-check">&#10003;</span>
-                            <div class="si-text">
-                                <strong>Drinking Water</strong>
-                                <span>At least 3 Litres per person per day for minimum 3 days</span>
-                            </div>
-                        </li>
-                        <li class="survival-item">
-                            <span class="si-check">&#10003;</span>
-                            <div class="si-text">
-                                <strong>Non-Perishable Nutrition</strong>
-                                <span>Ready-to-eat dry rations, protein bars, canned supplies</span>
-                            </div>
-                        </li>
-                        <li class="survival-item">
-                            <span class="si-check">&#10003;</span>
-                            <div class="si-text">
-                                <strong>Certified First Aid Kit</strong>
-                                <span>Sterile gauze, antiseptic, bandages, personal medications</span>
-                            </div>
-                        </li>
-                        <li class="survival-item">
-                            <span class="si-check">&#10003;</span>
-                            <div class="si-text">
-                                <strong>Emergency Radio & Illumination</strong>
-                                <span>Battery/hand-crank radio, high-lumen flashlight, extra batteries</span>
-                            </div>
-                        </li>
-                        <li class="survival-item">
-                            <span class="si-check">&#10003;</span>
-                            <div class="si-text">
-                                <strong>Vital Documents in Waterproof Pouch</strong>
-                                <span>Government IDs, insurance, medical prescriptions, emergency cash</span>
-                            </div>
-                        </li>
-                        <li class="survival-item">
-                            <span class="si-check">&#10003;</span>
-                            <div class="si-text">
-                                <strong>Multi-Tool, Whistle & Foil Blanket</strong>
-                                <span>Signaling whistle reaches search teams when voice fails</span>
-                            </div>
-                        </li>
-                    </ul>
+                <!-- Dynamic Question Body -->
+                <div id="activeDrillBody"></div>
+
+                <!-- Feedback Rationale -->
+                <div class="rationale-card-light" id="activeDrillRationale">
+                    <div style="font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 4px;" id="rationaleTitle">Verified Life-Safety Rule</div>
+                    <div style="font-size: 13.5px;" id="rationaleBody"></div>
                 </div>
 
+                <!-- Next Question Button -->
+                <button class="btn-proceed-light" id="btnNextDrillQuestion" onclick="nextDrillStep()">Proceed to Next Question →</button>
             </div>
-
         </div>
 
-        <!-- DRILL ARENA VIEW (Hidden until drill started) -->
-        <div id="gameContainer">
-            <div class="drill-arena-header">
-                <div class="drill-title-group">
-                    <button class="btn-abort-drill" onclick="abortDrill()">← Return to Dashboard</button>
-                    <span class="drill-active-name" id="activeDrillTitle">Disaster Safety Protocol Assessment</span>
+        <!-- ======================================================
+             VIEW 3: LEARN (SAFETY GUIDES)
+             ====================================================== -->
+        <div id="viewLearn" class="subview-container">
+            <div class="subview-header">
+                <div>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Disaster Safety Knowledge Hub</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Standardized operating procedures to protect yourself and your family.</p>
                 </div>
-                <div class="drill-hud">
-                    <span class="hud-progress" id="hudProgress">Question 1 / 10</span>
-                    <span class="hud-timer" id="hudTimer">⏱️ 25s</span>
-                    <span class="hud-score" id="hudScore">Session: 0 pts</span>
+                <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
+            </div>
+
+            <div class="learn-cards-grid">
+                <div class="learn-topic-card">
+                    <span style="font-size: 32px;">🌍</span>
+                    <h4>Earthquake Protocol</h4>
+                    <p><strong>Drop, Cover, and Hold On!</strong> Take cover under sturdy tables. Stay away from glass windows and power lines. Never use elevators during or right after a tremor.</p>
+                </div>
+                <div class="learn-topic-card">
+                    <span style="font-size: 32px;">🌊</span>
+                    <h4>Flash Flood Safety</h4>
+                    <p><strong>Turn Around, Don't Drown!</strong> Never walk or drive through moving water. Just 6 inches can sweep you off your feet. Move immediately to higher elevation.</p>
+                </div>
+                <div class="learn-topic-card">
+                    <span style="font-size: 32px;">🔥</span>
+                    <h4>Structural Fire & Smoke</h4>
+                    <p><strong>Crawl Low Under Smoke!</strong> Clean, breathable air stays near the ground. Cover your nose with a damp cloth and use stairwells to evacuate.</p>
+                </div>
+                <div class="learn-topic-card">
+                    <span style="font-size: 32px;">🌀</span>
+                    <h4>Cyclone & High Winds</h4>
+                    <p><strong>Shelter in Interior Rooms!</strong> Stay away from exterior windows and doors. Disconnect electrical appliances and secure loose rooftop objects.</p>
+                </div>
+                <div class="learn-topic-card">
+                    <span style="font-size: 32px;">☢️</span>
+                    <h4>Gas Leak / Hazmat</h4>
+                    <p><strong>Evacuate Upwind!</strong> If you detect a rotten-egg sulfur odor, evacuate immediately. Do not switch lights on or use phones inside the structure.</p>
+                </div>
+                <div class="learn-topic-card">
+                    <span style="font-size: 32px;">🌊</span>
+                    <h4>Tsunami Shore Warnings</h4>
+                    <p><strong>Rapid Coastline Receding = Move Up!</strong> When coastal water draws back suddenly, a massive wave is approaching. Evacuate inland and at least 30m uphill.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================================
+             VIEW 4: EMERGENCY HUB
+             ====================================================== -->
+        <div id="viewEmergency" class="subview-container">
+            <div class="subview-header">
+                <div>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Emergency Hub & Helplines</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Direct emergency dispatch lines and essential survival checklist.</p>
+                </div>
+                <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
+            </div>
+
+            <div class="helpline-grid-light">
+                <div class="hl-card-light">
+                    <span style="font-size: 12px; font-weight: 700; color: var(--text-muted);">UNIFIED NATIONAL EMERGENCY</span>
+                    <div class="hl-num-bold">112</div>
+                    <span style="font-size: 12px; color: var(--text-body);">Police, Fire & Ambulance (24x7)</span>
+                </div>
+                <div class="hl-card-light">
+                    <span style="font-size: 12px; font-weight: 700; color: var(--text-muted);">NDMA DISASTER HELPLINE</span>
+                    <div class="hl-num-bold">1078</div>
+                    <span style="font-size: 12px; color: var(--text-body);">Disaster Early Warnings & Relief</span>
+                </div>
+                <div class="hl-card-light">
+                    <span style="font-size: 12px; font-weight: 700; color: var(--text-muted);">STATE EMERGENCY CENTER</span>
+                    <div class="hl-num-bold">1070</div>
+                    <span style="font-size: 12px; color: var(--text-body);">State Disaster Relief & Rescue</span>
                 </div>
             </div>
 
-            <div class="drill-arena-body">
-                <!-- Question / Incident Prompt Area -->
-                <div id="drillDynamicContent">
-                    <!-- Populated dynamically by JS -->
-                </div>
+            <h3 style="font-size: 16px; font-weight: 800; color: var(--text-heading); margin: 24px 0 12px;">🎒 Essential 72-Hour Survival Go-Bag (Interactive Checklist)</h3>
+            <div class="checklist-grid">
+                <label class="check-item-light">
+                    <input type="checkbox" checked>
+                    <span>Water: 3 Litres/person per day for minimum 3 days</span>
+                </label>
+                <label class="check-item-light">
+                    <input type="checkbox" checked>
+                    <span>Non-perishable ready-to-eat energy bars & dry rations</span>
+                </label>
+                <label class="check-item-light">
+                    <input type="checkbox">
+                    <span>First Aid kit with antiseptic, gauze, & personal medication</span>
+                </label>
+                <label class="check-item-light">
+                    <input type="checkbox">
+                    <span>Battery or hand-crank emergency radio & extra cells</span>
+                </label>
+                <label class="check-item-light">
+                    <input type="checkbox">
+                    <span>High-lumen LED flashlight & waterproof matches</span>
+                </label>
+                <label class="check-item-light">
+                    <input type="checkbox">
+                    <span>Emergency signaling whistle & thermal foil space blanket</span>
+                </label>
+            </div>
+        </div>
 
-                <!-- Rationale Box (Appears after answer) -->
-                <div class="rationale-card" id="rationaleBox">
-                    <div class="rationale-title" id="rationaleTitle">Standard Life-Safety Rationale</div>
-                    <div class="rationale-text" id="rationaleText"></div>
+        <!-- ======================================================
+             VIEW 5: SUPPORT CHAT
+             ====================================================== -->
+        <div id="viewChat" class="subview-container">
+            <div class="subview-header">
+                <div>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Satark AI Safety Assistant</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Ask any question about safety guidelines, emergency protocols, or emotional support.</p>
                 </div>
+                <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
+            </div>
 
-                <!-- Next Button -->
-                <button class="btn-next-action" id="btnNextAction" onclick="proceedToNextQuestion()">
-                    Proceed to Next Incident &rarr;
-                </button>
+            <div class="chat-box-light">
+                <div class="chat-history" id="chatHistory">
+                    <div class="chat-msg bot">
+                        👋 Hi! I'm your Satark Safety Companion. Ask me about emergency procedures, what to pack in your go-bag, or how to prepare for an upcoming weather alert!
+                    </div>
+                </div>
+                <form class="chat-input-bar" onsubmit="handleSendChat(event)">
+                    <input type="text" id="chatInput" placeholder="Type your safety question..." autocomplete="off">
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ======================================================
+             VIEW 6: MY PROFILE & LEADERBOARD
+             ====================================================== -->
+        <div id="viewProfile" class="subview-container">
+            <div class="subview-header">
+                <div>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">My Profile & National Leaderboard</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Community preparedness rankings synced with Hibernate ORM & PostgreSQL.</p>
+                </div>
+                <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
+            </div>
+
+            <table class="leaderboard-table-light">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Responder</th>
+                        <th>Drills Completed</th>
+                        <th>Readiness Points</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="profileLeaderboardTbody">
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">Loading leaderboard data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ======================================================
+             VIEW 7: ADMIN PANEL
+             ====================================================== -->
+        <div id="viewAdmin" class="subview-container">
+            <div class="subview-header">
+                <div>
+                    <h2 style="font-size: 22px; font-weight: 800; color: var(--text-heading);">Admin Operational Console</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">System diagnostics and disaster alert broadcasting.</p>
+                </div>
+                <button class="btn-subview-back" onclick="switchNav('dashboard')">← Return to Dashboard</button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px;">
+                    <h4 style="font-size: 15px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">System Health</h4>
+                    <p style="font-size: 13px; color: var(--text-body); margin-bottom: 12px;">Database: PostgreSQL &bull; ORM: Hibernate 6.6 &bull; Server: Apache Tomcat 9</p>
+                    <div style="font-size: 12px; font-weight: 700; color: var(--accent-green);">● All Services Operational</div>
+                </div>
+                <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px;">
+                    <h4 style="font-size: 15px; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Broadcast New Regional Advisory</h4>
+                    <p style="font-size: 13px; color: var(--text-body); margin-bottom: 12px;">Dispatches instantaneous emergency alerts to all connected citizen units.</p>
+                    <button style="background: var(--accent-orange); color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer;" onclick="alert('Broadcasting demo alert triggered.')">Issue Weather Advisory</button>
+                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- Emergency SOS Directory Modal -->
-    <div class="modal-overlay" id="sosModal">
-        <div class="modal-box">
-            <div class="modal-header">
-                <div class="modal-title">🚨 National Emergency Response Directory</div>
-                <button class="btn-close-modal" onclick="closeSosModal()">&times;</button>
-            </div>
-            <table class="helpline-table">
-                <thead>
-                    <tr>
-                        <th>Emergency Service</th>
-                        <th>Emergency Number</th>
-                        <th>Scope of Operation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Unified National Emergency</td>
-                        <td><strong>112</strong></td>
-                        <td>Police, Fire, Ambulance 24x7 dispatch</td>
-                    </tr>
-                    <tr>
-                        <td>NDMA Early Warning & Relief</td>
-                        <td><strong>1078</strong></td>
-                        <td>Disaster early alerts & NDRF deployment</td>
-                    </tr>
-                    <tr>
-                        <td>State Disaster Management (SEOC)</td>
-                        <td><strong>1070</strong></td>
-                        <td>State-level emergency response & rescue</td>
-                    </tr>
-                    <tr>
-                        <td>District Disaster Control Room</td>
-                        <td><strong>1077</strong></td>
-                        <td>District relief centers & emergency evacuation</td>
-                    </tr>
-                    <tr>
-                        <td>Fire & Chemical Rescue</td>
-                        <td><strong>101</strong></td>
-                        <td>Building fires & industrial leaks</td>
-                    </tr>
-                    <tr>
-                        <td>Emergency Medical Ambulance</td>
-                        <td><strong>108</strong></td>
-                        <td>Medical evacuation & emergency trauma care</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
-                In the event of an imminent catastrophe, remain calm, preserve battery power for official emergency alerts, and adhere strictly to instructions issued by emergency responders.
-            </p>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT ENGINE -->
+    <!-- ==========================================================
+         JAVASCRIPT ENGINE
+         ========================================================== -->
     <script>
-        // ---- Session State ----
+        // User State
         let currentUser = null;
+
+        // Active Drill State
         let activeDrill = {
             type: '',
             questions: [],
             index: 0,
             score: 0,
-            correctCount: 0,
             timer: null,
             timeLeft: 0,
             answered: false
         };
 
-        // Initialize User Session
-        function initSession() {
+        // Initialize Application
+        function initApp() {
             const raw = sessionStorage.getItem('user');
             if (raw) {
                 try {
@@ -1472,40 +1649,134 @@
             }
 
             if (!currentUser) {
-                // If not logged in, use guest responder profile for demonstration
                 currentUser = {
-                    id: 100,
-                    username: "citizen_guest",
-                    quizScore: 0,
+                    id: 1,
+                    username: "Harish",
+                    quizScore: 10,
                     scrambleScore: 0,
                     pictureScore: 0,
-                    totalScore: 0,
+                    totalScore: 10,
                     gamesPlayed: 0
                 };
             }
 
-            updateDashboardUI();
+            updateFitnessDashboard();
             loadLeaderboard();
+            setLiveAlertTimestamp();
         }
 
-        // Update Dashboard Elements
-        function updateDashboardUI() {
-            document.getElementById('navUsername').textContent = currentUser.username;
-            document.getElementById('navScore').textContent = currentUser.totalScore || 0;
+        // Set Live Timestamp like image ("Sep 13, 2:55 AM")
+        function setLiveAlertTimestamp() {
+            const now = new Date();
+            const options = { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
+            const timeStr = now.toLocaleString('en-US', options);
+            const el = document.getElementById('liveAlertTime');
+            if (el) el.textContent = timeStr;
+        }
 
-            document.getElementById('cardTotalScore').textContent = currentUser.totalScore || 0;
-            document.getElementById('cardQuizScore').textContent = currentUser.quizScore || 0;
-            document.getElementById('cardScrambleScore').textContent = currentUser.scrambleScore || 0;
-            document.getElementById('cardPictureScore').textContent = currentUser.pictureScore || 0;
+        // Update Fitness UI Metrics & Smooth Progress Bar
+        function updateFitnessDashboard() {
+            const name = currentUser.username || "Harish";
+            const points = currentUser.totalScore || 0;
+            const drills = currentUser.gamesPlayed || 0;
 
-            // Tier calculation
-            const tot = currentUser.totalScore || 0;
-            let rating = "Tier 1: Initial Citizen";
-            if (tot >= 300) rating = "Tier 4: Master Responder";
-            else if (tot >= 180) rating = "Tier 3: Advanced Responder";
-            else if (tot >= 80) rating = "Tier 2: Certified Prepared";
+            // Sidebar
+            document.getElementById('sidebarUsername').textContent = name;
+            document.getElementById('sidebarAvatar').textContent = name.charAt(0).toUpperCase();
 
-            document.getElementById('cardRankRating').textContent = "Rating: " + rating;
+            // Header
+            document.getElementById('headerWelcomeName').textContent = name;
+
+            // Level & Progress Bar Calculations (Matching Image)
+            // Tier 1: 0 - 250 pts -> Level 1 Hero
+            // Tier 2: 250 - 500 pts -> Level 2 Hero
+            // Tier 3: 500 - 1000 pts -> Level 3 Master
+            let level = 1;
+            let currentTierMin = 0;
+            let nextTierMax = 250;
+            let tierName = "Level 1 Hero";
+            let roleName = "New Responder";
+
+            if (points >= 500) {
+                level = 3;
+                currentTierMin = 500;
+                nextTierMax = 1000;
+                tierName = "Level 3 Master";
+                roleName = "Master Responder";
+            } else if (points >= 250) {
+                level = 2;
+                currentTierMin = 250;
+                nextTierMax = 500;
+                tierName = "Level 2 Hero";
+                roleName = "Advanced Responder";
+            }
+
+            const pointsInLevel = points - currentTierMin;
+            const levelRange = nextTierMax - currentTierMin;
+            let progressPercent = Math.min(100, Math.max(4, Math.round((pointsInLevel / levelRange) * 100)));
+            const pointsRemaining = Math.max(0, nextTierMax - points);
+
+            document.getElementById('sidebarRole').textContent = roleName;
+            document.getElementById('heroLevelTag').textContent = level;
+            document.getElementById('heroTierName').textContent = tierName;
+            document.getElementById('heroPointsEarned').textContent = `${points} Points Earned`;
+            document.getElementById('heroProgressToLevel').textContent = `Progress to Level ${level + 1}`;
+            document.getElementById('heroProgressPercent').textContent = `${progressPercent}%`;
+            document.getElementById('heroPointsUntilNext').textContent = `${pointsRemaining} points until next level`;
+
+            // Smooth Pill Progress Bar
+            document.getElementById('heroProgressFill').style.width = `${progressPercent}%`;
+
+            // 4 Stat Cards
+            document.getElementById('statDrillsCount').textContent = drills;
+            document.getElementById('statCurrentLevel').textContent = level;
+            document.getElementById('statTotalPoints').textContent = points;
+
+            // Safety Score %: based on drills & points
+            let safetyScore = Math.min(100, Math.max(20, Math.round((points / 250) * 100)));
+            document.getElementById('statSafetyScore').textContent = `${safetyScore}%`;
+        }
+
+        // Navigation Switcher
+        function switchNav(viewId) {
+            // Hide all subviews
+            document.getElementById('viewDashboard').style.display = 'none';
+            document.getElementById('viewDrills').style.display = 'none';
+            document.getElementById('viewLearn').style.display = 'none';
+            document.getElementById('viewEmergency').style.display = 'none';
+            document.getElementById('viewChat').style.display = 'none';
+            document.getElementById('viewProfile').style.display = 'none';
+            document.getElementById('viewAdmin').style.display = 'none';
+
+            // Reset active nav link
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            if (viewId === 'dashboard') {
+                document.getElementById('viewDashboard').style.display = 'block';
+                document.getElementById('navDashboard').classList.add('active');
+            } else if (viewId === 'drills') {
+                document.getElementById('viewDrills').style.display = 'block';
+                document.getElementById('drillSelectionScreen').style.display = 'block';
+                document.getElementById('drillPlayArea').style.display = 'none';
+                document.getElementById('navDrills').classList.add('active');
+            } else if (viewId === 'learn') {
+                document.getElementById('viewLearn').style.display = 'block';
+                document.getElementById('navLearn').classList.add('active');
+            } else if (viewId === 'emergency') {
+                document.getElementById('viewEmergency').style.display = 'block';
+                document.getElementById('navEmergency').classList.add('active');
+            } else if (viewId === 'chat') {
+                document.getElementById('viewChat').style.display = 'block';
+                document.getElementById('navChat').classList.add('active');
+            } else if (viewId === 'profile') {
+                document.getElementById('viewProfile').style.display = 'block';
+                document.getElementById('navProfile').classList.add('active');
+            } else if (viewId === 'admin') {
+                document.getElementById('viewAdmin').style.display = 'block';
+                document.getElementById('navAdmin').classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Logout
@@ -1514,665 +1785,430 @@
             window.location.href = 'index.html';
         }
 
-        // Leaderboard Fetch
-        async function loadLeaderboard() {
-            const rowsEl = document.getElementById('leaderboardRows');
-            try {
-                const res = await fetch('user?action=leaderboard');
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.status === 'success' && data.leaderboard && data.leaderboard.length > 0) {
-                        renderLeaderboard(data.leaderboard);
-                        return;
-                    }
-                }
-            } catch (err) {
-                console.warn('[SATARK] Using fallback leaderboard data (backend offline):', err);
-            }
-
-            // Fallback sample data if database/servlet is not reached
-            const fallbackPlayers = [
-                { username: "responder_arjun", gamesPlayed: 8, totalScore: 350 },
-                { username: "ndrf_priya", gamesPlayed: 7, totalScore: 305 },
-                { username: "citizen_rahul", gamesPlayed: 5, totalScore: 235 },
-                { username: currentUser.username, gamesPlayed: currentUser.gamesPlayed || 0, totalScore: currentUser.totalScore || 0 }
-            ];
-            fallbackPlayers.sort((a, b) => b.totalScore - a.totalScore);
-            renderLeaderboard(fallbackPlayers);
-        }
-
-        function renderLeaderboard(players) {
-            const rowsEl = document.getElementById('leaderboardRows');
-            rowsEl.innerHTML = players.map((p, idx) => {
-                const rank = idx + 1;
-                let rankClass = '';
-                if (rank === 1) rankClass = 'top1';
-                else if (rank === 2) rankClass = 'top2';
-                else if (rank === 3) rankClass = 'top3';
-
-                let badge = '<span class="badge-level basic">Citizen</span>';
-                if (p.totalScore >= 300) badge = '<span class="badge-level advanced">Master</span>';
-                else if (p.totalScore >= 180) badge = '<span class="badge-level intermediate">Advanced</span>';
-
-                return `
-                    <tr>
-                        <td class="rank-num ${rankClass}">#${rank}</td>
-                        <td class="player-name-cell">${escapeHtml(p.username)}</td>
-                        <td>${p.gamesPlayed || 0}</td>
-                        <td class="score-cell">${p.totalScore || 0} pts</td>
-                        <td>${badge}</td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        // Escape HTML helper
-        function escapeHtml(text) {
-            if (!text) return '';
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
         // ==========================================================
-        //  DRILL DATA REPOSITORY
+        //  DRILLS DATA & ENGINE
         // ==========================================================
-
         const QUIZ_QUESTIONS = [
             {
-                q: "During a sudden earthquake tremor, what is the single most verified action you should take immediately?",
-                options: ["Run outside into the street", "Drop, Cover, and Hold On under sturdy furniture", "Stand right next to large exterior glass windows", "Quickly take the elevator downstairs"],
+                q: "During a sudden earthquake tremor, what should you do immediately?",
+                options: ["Run outside into the street", "Drop, Cover, and Hold On under sturdy furniture", "Stand near large glass windows", "Take the elevator down"],
                 answer: 1,
-                explanation: "Drop to your hands and knees, take Cover under sturdy furniture, and Hold On until shaking ceases. Shifting debris causes most injuries."
+                explanation: "Drop, Cover, and Hold On is the verified standard. Most injuries occur from falling debris, glass, and collapsing interior elements."
             },
             {
                 q: "What is the safest place inside a building during a severe tornado warning?",
-                options: ["Standing by windows to check storm progress", "Inside an automobile parked in the driveway", "An interior room or hallway on the lowest floor without windows", "On the rooftop with an umbrella"],
+                options: ["Standing next to windows", "In a car in the garage", "An interior room on the lowest floor without windows", "On the rooftop with a rain jacket"],
                 answer: 2,
-                explanation: "Interior lowest-floor rooms (like closets or interior bathrooms) protect against lethal airborne debris and collapsed exterior walls."
+                explanation: "Interior lowest-floor rooms provide structural protection from flying debris and exterior wall failure."
             },
             {
-                q: "During rising flash floods, what is the primary life-safety rule?",
-                options: ["Move immediately to higher ground", "Tune in to local emergency radio broadcasts", "Turn around, never drive or walk through floodwaters", "Have an emergency survival kit prepared"],
+                q: "During a flash flood, what is a critical rule you must NEVER break?",
+                options: ["Move to higher ground", "Listen to weather alerts", "Drive or walk through floodwaters", "Keep an emergency go-bag ready"],
                 answer: 2,
-                explanation: "Never enter moving water. Just 6 inches of rapid water can sweep an adult off their feet; 12-24 inches can float passenger cars."
+                explanation: "Turn Around, Don't Drown! Just 6 inches of fast water knocks an adult down, and 12-24 inches sweeps cars off roads."
             },
             {
-                q: "What extinguishing agent is contained inside a standard multipurpose Class B & C dry chemical extinguisher?",
-                options: ["Pressurized tap water", "Compressed liquefied carbon dioxide", "Monoammonium phosphate / sodium bicarbonate dry chemical powder", "Protein foam concentrate"],
-                answer: 2,
-                explanation: "Dry chemical extinguishers smother flammable liquid and electrical fires without conducting electric currents."
-            },
-            {
-                q: "In a structural fire, how should you navigate through dense smoke?",
-                options: ["Sprint upright as fast as possible", "Crawl low on hands and knees under the smoke ceiling", "Open all doors and windows on your route", "Take the elevator to evacuate quickly"],
+                q: "In a burning building, how should you navigate through heavy smoke?",
+                options: ["Sprint upright as fast as possible", "Crawl low on hands and knees under the smoke layer", "Open all doors and windows", "Use the elevator for fast exit"],
                 answer: 1,
-                explanation: "Toxic smoke and superheated carbon monoxide rise to the ceiling; breathable, cooler air remains 12 to 24 inches above the floor."
+                explanation: "Superheated smoke and carbon monoxide rise. The cleanest, coolest air remains 12 to 24 inches above the floor."
             },
             {
-                q: "A coastal Tsunami Early Warning siren sounds and the shoreline is receding rapidly. What is your immediate protocol?",
-                options: ["Rush to the beach to observe the unusual seabed", "Immediately evacuate inland and upwards to elevated ground", "Seek shelter in a ground-level basement", "Board a small boat at the marina"],
+                q: "What does an emergency 72-hour Go-Bag prioritize first?",
+                options: ["Heavy luxury items", "Drinking water (3L/day/person), non-perishable food, first aid & flashlight", "Cellular games without chargers", "Decorative clothing"],
                 answer: 1,
-                explanation: "A receding coastline is an urgent warning of an incoming tsunami crest. Move inland and at least 30 meters above sea level without delay."
-            },
-            {
-                q: "What are the essential contents of a standardized 72-hour Disaster Go-Bag?",
-                options: ["Only perishable bakery food", "Drinking water, non-perishable rations, first aid kit, flashlight, radio, multi-tool", "Expensive entertainment electronics and heavy quilts", "A mobile phone without backup batteries"],
-                answer: 1,
-                explanation: "A survival go-bag must sustain vital physiological needs for 72 hours until official disaster relief infrastructure mobilizes."
-            },
-            {
-                q: "During a severe Cyclone or Hurricane, what is the safest indoor precaution?",
-                options: ["Tape windows and leave them open", "Stay in an interior windowless room, staying clear of exterior doors and glass", "Step outside during the eye to evaluate damage", "Use open candles for indoor lighting"],
-                answer: 1,
-                explanation: "High-velocity airborne missiles cause severe casualties in cyclones. Stay protected in interior rooms without exterior glass."
-            },
-            {
-                q: "If you detect a distinct rotten egg / sulfur smell indicating a combustible gas leak in your home:",
-                options: ["Strike a match to check the source", "Flip lighting switches on to investigate", "Evacuate immediately without operating electrical switches, then call emergency from outside", "Turn on the kitchen exhaust fan"],
-                answer: 2,
-                explanation: "Flipping any electrical switch or phone can produce microscopic electrical arcs capable of detonating concentrated gas."
-            },
-            {
-                q: "What is the unified emergency response helpline number in India (ERSS)?",
-                options: ["911", "100", "112", "999"],
-                answer: 2,
-                explanation: "112 is the nationwide single emergency helpline number integrating Police, Fire, and Ambulance dispatch across India."
+                explanation: "Water, food, first aid, and signaling sustain physiological survival before organized rescue services mobilize."
             }
         ];
 
         const SCRAMBLE_WORDS = [
-            { word: "EARTHQUAKE", scrambled: "KHRAQUETEA", hint: "Violent shaking of the earth's crust along tectonic faults" },
-            { word: "TSUNAMI", scrambled: "IUNAMTS", hint: "Massive ocean surge generated by submarine seismic disturbances" },
-            { word: "TORNADO", scrambled: "DONTARO", hint: "Violently rotating column of air extending from thunderstorm to ground" },
-            { word: "EVACUATION", scrambled: "VACUTIONEA", hint: "Organized withdrawal of citizens from an endangered danger zone" },
-            { word: "EPICENTER", scrambled: "CPENTERIE", hint: "The point on earth's surface directly above an earthquake focus" },
-            { word: "AFTERSHOCK", scrambled: "FTERSOCKAH", hint: "Smaller secondary seismic tremors following the main earthquake rupture" },
-            { word: "FIRSTAID", scrambled: "RSTFIAID", hint: "Immediate emergency care provided prior to specialized medical transport" },
-            { word: "BAROMETER", scrambled: "ROBAMETER", hint: "Instrument measuring atmospheric pressure to detect incoming cyclonic storms" },
-            { word: "CYCLONE", scrambled: "YCOLENC", hint: "Deep low-pressure vortex featuring destructive revolving winds" },
-            { word: "SURVIVAL", scrambled: "RVIVASUL", hint: "The preservation of life and health through prepared emergency procedures" }
+            { word: "EARTHQUAKE", scrambled: "KHRAQUETEA", hint: "Ground shaking violently — a seismic event along faults" },
+            { word: "TSUNAMI", scrambled: "IUNAMTS", hint: "Giant ocean wave generated by submarine earthquakes" },
+            { word: "EVACUATION", scrambled: "VACUTIONEA", hint: "Orderly withdrawal of people from an imminent hazard zone" },
+            { word: "FIRSTAID", scrambled: "RSTFIAID", hint: "Emergency care given immediately to an injured victim" },
+            { word: "CYCLONE", scrambled: "YCOLENC", hint: "Rotating tropical storm system with high destructive winds" }
         ];
 
         const PICTURE_SCENARIOS = [
             {
                 icon: "🌊",
-                title: "Flash Flood Surge Approaching Vehicle",
-                scenario: "You are driving on a road when sudden floodwater begins rising rapidly across the pavement ahead.",
+                title: "Flash Flood Surge Approaching Car",
+                scenario: "You are driving on a road when water begins rising quickly across the pavement ahead.",
                 options: [
-                    { text: "Accelerate and attempt to drive through quickly", correct: false },
+                    { text: "Accelerate to drive through before it deepens", correct: false },
                     { text: "Turn around or abandon vehicle and move to high ground immediately", correct: true },
-                    { text: "Stay inside the submerged vehicle with windows rolled up", correct: false },
-                    { text: "Park under a low-lying bridge and wait", correct: false }
+                    { text: "Stay inside the submerged car with doors locked", correct: false },
+                    { text: "Wait under a low highway underpass", correct: false }
                 ],
-                explanation: "Water depth is deceptive. Moving water sweeps cars off roads into deep ditches. Abandon the vehicle and reach higher elevation."
+                explanation: "Never enter floodwaters. Moving water hides washouts and carries away vehicles in seconds."
             },
             {
                 icon: "🔥",
-                title: "Structural Fire Smoke in Hallway",
-                scenario: "A fire alarm rings in your apartment complex. As you open your apartment door, thick black smoke is pouring down the hallway.",
+                title: "Dense Smoke in Hallway",
+                scenario: "A fire alarm rings. As you open your apartment door, thick black smoke fills the corridor.",
                 options: [
-                    { text: "Take the nearest elevator to exit quickly", correct: false },
-                    { text: "Crawl low on hands and knees under smoke layer towards the fire stairs", correct: true },
-                    { text: "Stand tall and run upright through the smoke", correct: false },
-                    { text: "Run back inside and hide in an unventilated closet", correct: false }
+                    { text: "Take the elevator downstairs", correct: false },
+                    { text: "Crawl low on hands and knees to the nearest fire exit stairs", correct: true },
+                    { text: "Sprint upright down the hall", correct: false },
+                    { text: "Hide in an unventilated closet", correct: false }
                 ],
-                explanation: "Thermal air buoyancy pushes hot toxic gases up. The bottom 18 inches contain the coolest and most oxygenated air."
+                explanation: "Smoke inhalation is the leading cause of fire fatalities. Crawling keeps you under toxic gases."
             },
             {
                 icon: "⚡",
-                title: "Caught in Open Field During Severe Lightning",
-                scenario: "You are caught in an open meadow during a severe thunderstorm with cloud-to-ground lightning strikes.",
+                title: "Caught in Open Meadow During Lightning",
+                scenario: "You are outdoors during a severe storm with frequent cloud-to-ground lightning.",
                 options: [
-                    { text: "Run and take shelter under the tallest isolated tree", correct: false },
-                    { text: "Crouch low on balls of feet with hands over ears, away from tall trees", correct: true },
-                    { text: "Lie completely flat on the soaked grass", correct: false },
-                    { text: "Hold up a metal-tipped umbrella for rain protection", correct: false }
+                    { text: "Seek shelter under the tallest solitary tree", correct: false },
+                    { text: "Crouch low on balls of feet with feet touching, away from tall objects", correct: true },
+                    { text: "Lie completely flat on the soaked mud", correct: false },
+                    { text: "Hold up an open umbrella", correct: false }
                 ],
-                explanation: "Tall isolated objects attract lightning strikes. Crouching low with feet touching minimizes ground-current transmission through the heart."
-            },
-            {
-                icon: "🌍",
-                title: "Sudden Indoor Seismic Tremors",
-                scenario: "Violent earthquake shaking begins while you are sitting in a classroom or office room on the 4th floor.",
-                options: [
-                    { text: "Rush into the stairwell to run outside immediately", correct: false },
-                    { text: "Drop, Cover under a sturdy desk, and Hold On firmly until shaking stops", correct: true },
-                    { text: "Sprint towards large exterior glass windows to jump", correct: false },
-                    { text: "Board the elevator to get down to ground level", correct: false }
-                ],
-                explanation: "Falling ceiling tiles, glass, and building facades cause most injuries. Drop, Cover, and Hold On is the verified standard."
-            },
-            {
-                icon: "☢️",
-                title: "Industrial Chemical / Toxic Gas Vapor Release",
-                scenario: "A hazardous material tank breach occurs 1 km away. An pungent chemical odor spreads through your neighborhood.",
-                options: [
-                    { text: "Run towards the plant to inspect the source", correct: false },
-                    { text: "Shelter in place indoors, seal windows/doors, and shut off ventilation", correct: true },
-                    { text: "Turn on air conditioning to circulate outside air", correct: false },
-                    { text: "Drink untreated outdoor water to flush your throat", correct: false }
-                ],
-                explanation: "Shelter-in-place with sealed openings prevents airborne hazardous particulates from penetrating indoor living spaces."
-            },
-            {
-                icon: "🌋",
-                title: "Volcanic Ash Fall Warning",
-                scenario: "An explosive volcanic eruption deposits fine abrasive silica ash across your district.",
-                options: [
-                    { text: "Stay indoors, protect respiratory tract with damp masks/cloth, cover eyes", correct: true },
-                    { text: "Drive at high speeds without headlights through ash clouds", correct: false },
-                    { text: "Collect ash barehanded without respiratory protection", correct: false },
-                    { text: "Leave all house windows open to ventilate", correct: false }
-                ],
-                explanation: "Volcanic ash consists of pulverized rock and microscopic glass shards that cause acute lung laceration and engine stall."
-            },
-            {
-                icon: "🌡️",
-                title: "Severe Heatwave with 46°C Temperature",
-                scenario: "A meteorological red alert for extreme heatwave is active in your urban area.",
-                options: [
-                    { text: "Undertake heavy cardiovascular workouts in midday sun", correct: false },
-                    { text: "Stay indoors in cool areas, consume oral rehydration fluids and water regularly", correct: true },
-                    { text: "Drink alcoholic and caffeinated beverages to cool off", correct: false },
-                    { text: "Wear heavy, dark, tight synthetic clothing", correct: false }
-                ],
-                explanation: "Heat exhaustion can transition into fatal heat stroke within minutes. Regular hydration and sun avoidance are critical."
-            },
-            {
-                icon: "🏔️",
-                title: "Hillside Landslide / Debris Flow Rumbling",
-                scenario: "After torrential monsoon rain, you hear deep ground rumbling and observe tilting trees on a steep hillside above you.",
-                options: [
-                    { text: "Run straight downhill directly along the natural gully channel", correct: false },
-                    { text: "Move rapidly sideways/perpendicular to the flow path towards stable ground", correct: true },
-                    { text: "Stop and film the landslide with your smartphone", correct: false },
-                    { text: "Climb up a power transmission tower in the flow path", correct: false }
-                ],
-                explanation: "Mudslides and debris flows travel at extreme speeds down stream channels. Running sideways out of the gully is life-saving."
-            },
-            {
-                icon: "🔌",
-                title: "Downed High-Voltage Power Line in Rain",
-                scenario: "After a severe gale storm, a live electric utility wire snaps and rests across a wet sidewalk in front of you.",
-                options: [
-                    { text: "Walk up and push the wire aside with your bare hand", correct: false },
-                    { text: "Stay at least 10 meters (33 ft) away, warn others, and shuffle feet together to retreat", correct: true },
-                    { text: "Pour water on the wire to douse any sparks", correct: false },
-                    { text: "Drive a bicycle directly over the wire", correct: false }
-                ],
-                explanation: "High voltage electricity electrifies the surrounding wet soil in concentric voltage gradients. Shuffling prevents dangerous voltage differentials between your feet."
-            },
-            {
-                icon: "🌊",
-                title: "Tsunami Warning After Coastal Quake",
-                scenario: "You felt strong coastal earthquake shaking lasting over 30 seconds. Water begins pulling away rapidly from the beach.",
-                options: [
-                    { text: "Evacuate inland and upward to elevated ground or reinforced tall structure immediately", correct: true },
-                    { text: "Walk onto the exposed dry reef to collect stranded sea life", correct: false },
-                    { text: "Drive down to the harbor to see your boat", correct: false },
-                    { text: "Wait for official sirens before initiating any evacuation", correct: false }
-                ],
-                explanation: "Strong ground shaking lasting 20+ seconds near the coast is nature's own tsunami warning. Do not wait for sirens; move to high ground instantly."
+                explanation: "Crouching low with feet touching minimizes ground-current transmission through the body."
             }
         ];
 
-        // ==========================================================
-        //  DRILL ENGINE
-        // ==========================================================
-
-        function startDrill(type) {
+        function launchActiveDrill(type) {
             activeDrill.type = type;
             activeDrill.index = 0;
             activeDrill.score = 0;
-            activeDrill.correctCount = 0;
             activeDrill.answered = false;
 
-            if (type === 'quiz') {
-                activeDrill.questions = shuffleArray([...QUIZ_QUESTIONS]).slice(0, 10);
-                document.getElementById('activeDrillTitle').textContent = "Disaster Safety Protocol Assessment";
-            } else if (type === 'scramble') {
-                activeDrill.questions = shuffleArray([...SCRAMBLE_WORDS]).slice(0, 10);
-                document.getElementById('activeDrillTitle').textContent = "Emergency Codes & Terminology Drill";
-            } else if (type === 'picture') {
-                activeDrill.questions = shuffleArray([...PICTURE_SCENARIOS]).slice(0, 10);
-                document.getElementById('activeDrillTitle').textContent = "Critical Incident Decision Challenge";
-            }
+            if (type === 'quiz') activeDrill.questions = QUIZ_QUESTIONS;
+            else if (type === 'scramble') activeDrill.questions = SCRAMBLE_WORDS;
+            else if (type === 'picture') activeDrill.questions = PICTURE_SCENARIOS;
 
-            document.getElementById('dashboard').style.display = 'none';
-            document.getElementById('gameContainer').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('drillSelectionScreen').style.display = 'none';
+            document.getElementById('drillPlayArea').style.display = 'block';
 
-            loadQuestion();
+            renderCurrentDrillStep();
         }
 
-        function abortDrill() {
-            clearInterval(activeDrill.timer);
-            document.getElementById('gameContainer').style.display = 'none';
-            document.getElementById('dashboard').style.display = 'block';
-        }
-
-        function loadQuestion() {
+        function renderCurrentDrillStep() {
             clearInterval(activeDrill.timer);
             activeDrill.answered = false;
 
             const q = activeDrill.questions[activeDrill.index];
             const total = activeDrill.questions.length;
+            const progress = Math.round(((activeDrill.index + 1) / total) * 100);
 
-            document.getElementById('hudProgress').textContent = `Incident ${activeDrill.index + 1} of ${total}`;
-            document.getElementById('hudScore').textContent = `Session: ${activeDrill.score} pts`;
+            document.getElementById('activeDrillProgressText').textContent = `Question ${activeDrill.index + 1} of ${total}`;
+            document.getElementById('activeDrillProgressFill').style.width = `${progress}%`;
 
-            // Hide rationale & next button
-            document.getElementById('rationaleBox').className = 'rationale-card';
-            document.getElementById('btnNextAction').className = 'btn-next-action';
+            document.getElementById('activeDrillRationale').className = 'rationale-card-light';
+            document.getElementById('btnNextDrillQuestion').className = 'btn-proceed-light';
 
-            const container = document.getElementById('drillDynamicContent');
+            const container = document.getElementById('activeDrillBody');
 
             if (activeDrill.type === 'quiz') {
-                renderQuiz(q, container);
-                startTimer(25);
+                container.innerHTML = `
+                    <div class="question-card-light">
+                        <div class="question-text-light">${q.q}</div>
+                    </div>
+                    <div class="options-list-light" id="optsListLight">
+                        ${q.options.map((opt, i) => `
+                            <button class="opt-btn-light" onclick="answerQuizQuestion(${i}, ${q.answer})">
+                                <span style="font-weight: 800; color: var(--primary-blue); font-family: 'JetBrains Mono', monospace;">${String.fromCharCode(65 + i)}</span>
+                                <span>${opt}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                startDrillTimer(25);
             } else if (activeDrill.type === 'scramble') {
-                renderScramble(q, container);
-                startTimer(30);
+                const chips = q.scrambled.split('').map(c => `<span class="letter-chip">${c}</span>`).join('');
+                container.innerHTML = `
+                    <div class="question-card-light" style="text-align: center;">
+                        <div style="font-size: 13px; font-weight: 700; color: var(--accent-orange); text-transform: uppercase;">Unscramble the Emergency Term</div>
+                        <div class="scramble-letters-light">${chips}</div>
+                        <p style="font-size: 14px; color: var(--text-body); margin-bottom: 20px;"><strong>Hint:</strong> ${q.hint}</p>
+                        <form onsubmit="answerScramble(event)">
+                            <input type="text" id="scrambleInputLight" class="scramble-input-light" placeholder="TYPE ANSWER..." autocomplete="off">
+                            <button type="submit" class="btn-start-drill" style="max-width: 200px; margin: 16px auto 0; display: block;">Check Code</button>
+                        </form>
+                    </div>
+                `;
+                startDrillTimer(30);
+                setTimeout(() => {
+                    const inp = document.getElementById('scrambleInputLight');
+                    if (inp) inp.focus();
+                }, 100);
             } else if (activeDrill.type === 'picture') {
-                renderPicture(q, container);
-                startTimer(20);
+                container.innerHTML = `
+                    <div class="question-card-light">
+                        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+                            <span style="font-size: 32px;">${q.icon}</span>
+                            <div style="font-size: 17px; font-weight: 800; color: var(--text-heading);">${q.title}</div>
+                        </div>
+                        <p style="font-size: 14px; color: var(--text-body);">${q.scenario}</p>
+                    </div>
+                    <div class="options-list-light" id="scenarioOptsLight">
+                        ${q.options.map((opt, i) => `
+                            <button class="opt-btn-light" onclick="answerScenario(${i})">
+                                <span>${opt.text}</span>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+                startDrillTimer(20);
             }
         }
 
-        // Render Quiz
-        function renderQuiz(q, container) {
-            const letters = ['A', 'B', 'C', 'D'];
-            container.innerHTML = `
-                <div class="incident-card">
-                    <div class="incident-badge">🚨 Operational Safety Incident #${activeDrill.index + 1}</div>
-                    <div class="incident-prompt">${escapeHtml(q.q)}</div>
-                </div>
-                <div class="options-list" id="optsList">
-                    ${q.options.map((opt, i) => `
-                        <button class="option-button" onclick="selectQuizAnswer(${i}, ${q.answer})">
-                            <span class="opt-letter">${letters[i]}</span>
-                            <span>${escapeHtml(opt)}</span>
-                        </button>
-                    `).join('')}
-                </div>
-            `;
-        }
-
-        function selectQuizAnswer(selectedIdx, correctIdx) {
+        function answerQuizQuestion(selectedIdx, correctIdx) {
             if (activeDrill.answered) return;
             activeDrill.answered = true;
             clearInterval(activeDrill.timer);
 
-            const buttons = document.querySelectorAll('#optsList .option-button');
+            const buttons = document.querySelectorAll('#optsListLight .opt-btn-light');
             buttons.forEach(b => b.disabled = true);
 
-            const q = activeDrill.questions[activeDrill.index];
             const isCorrect = (selectedIdx === correctIdx);
+            const q = activeDrill.questions[activeDrill.index];
 
             if (isCorrect) {
                 buttons[selectedIdx].classList.add('correct');
                 activeDrill.score += 10;
-                activeDrill.correctCount++;
-                showRationale("Standard Life-Safety Protocol Verified", q.explanation, true);
+                showDrillFeedback(true, q.explanation);
             } else {
                 if (selectedIdx >= 0) buttons[selectedIdx].classList.add('incorrect');
                 buttons[correctIdx].classList.add('correct');
-                showRationale("Incorrect Action Detected", q.explanation, false);
+                showDrillFeedback(false, q.explanation);
             }
 
-            document.getElementById('hudScore').textContent = `Session: ${activeDrill.score} pts`;
-            document.getElementById('btnNextAction').classList.add('show');
+            document.getElementById('btnNextDrillQuestion').classList.add('show');
         }
 
-        // Render Scramble
-        function renderScramble(q, container) {
-            const lettersHtml = q.scrambled.split('').map(char => `<span class="letter-tile">${char}</span>`).join('');
-            container.innerHTML = `
-                <div class="scramble-box">
-                    <div class="incident-badge">🔤 Emergency Terminology Drill #${activeDrill.index + 1}</div>
-                    <div class="scramble-letters">${lettersHtml}</div>
-                    <div class="scramble-hint"><strong>Definition / Clue:</strong> ${escapeHtml(q.hint)}</div>
-                    <form onsubmit="handleScrambleSubmit(event)" class="scramble-input-group">
-                        <input type="text" id="scrambleInput" class="scramble-input" placeholder="Type solution..." autocomplete="off" autofocus>
-                        <button type="submit" class="btn-submit-answer">Verify Code</button>
-                    </form>
-                </div>
-            `;
-            setTimeout(() => {
-                const inp = document.getElementById('scrambleInput');
-                if (inp) inp.focus();
-            }, 50);
-        }
-
-        function handleScrambleSubmit(e) {
+        function answerScramble(e) {
             e.preventDefault();
             if (activeDrill.answered) return;
             activeDrill.answered = true;
             clearInterval(activeDrill.timer);
 
-            const input = document.getElementById('scrambleInput');
-            const userVal = (input.value || '').trim().toUpperCase();
+            const inp = document.getElementById('scrambleInputLight');
+            const val = (inp.value || '').trim().toUpperCase();
             const q = activeDrill.questions[activeDrill.index];
+            inp.disabled = true;
 
-            input.disabled = true;
-            const isCorrect = (userVal === q.word);
-
+            const isCorrect = (val === q.word);
             if (isCorrect) {
                 activeDrill.score += 15;
-                activeDrill.correctCount++;
-                showRationale("Code Word Verified Correct", `<strong>${q.word}</strong>: ${q.hint}`, true);
+                showDrillFeedback(true, `Correct! <strong>${q.word}</strong>: ${q.hint}`);
             } else {
-                showRationale("Incorrect Terminology", `Correct Emergency Term: <strong>${q.word}</strong>. ${q.hint}`, false);
+                showDrillFeedback(false, `Solution: <strong>${q.word}</strong>. ${q.hint}`);
             }
 
-            document.getElementById('hudScore').textContent = `Session: ${activeDrill.score} pts`;
-            document.getElementById('btnNextAction').classList.add('show');
+            document.getElementById('btnNextDrillQuestion').classList.add('show');
         }
 
-        // Render Picture / Incident Scenario
-        function renderPicture(q, container) {
-            container.innerHTML = `
-                <div class="scenario-box">
-                    <div class="scenario-visual-header">
-                        <div class="scenario-icon">${q.icon}</div>
-                        <div class="scenario-desc">
-                            <div class="incident-badge">Incident Scenario #${activeDrill.index + 1} &bull; ${escapeHtml(q.title)}</div>
-                            <h4>${escapeHtml(q.scenario)}</h4>
-                        </div>
-                    </div>
-                    <div class="scenario-options-grid" id="scenarioOpts">
-                        ${q.options.map((opt, i) => `
-                            <button class="scenario-opt-card" onclick="selectScenarioAnswer(${i})">
-                                <span>${escapeHtml(opt.text)}</span>
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        function selectScenarioAnswer(selectedIdx) {
+        function answerScenario(selectedIdx) {
             if (activeDrill.answered) return;
             activeDrill.answered = true;
             clearInterval(activeDrill.timer);
 
-            const q = activeDrill.questions[activeDrill.index];
-            const cards = document.querySelectorAll('#scenarioOpts .scenario-opt-card');
+            const cards = document.querySelectorAll('#scenarioOptsLight .opt-btn-light');
             cards.forEach(c => c.disabled = true);
 
+            const q = activeDrill.questions[activeDrill.index];
             const chosen = q.options[selectedIdx];
+
             if (chosen && chosen.correct) {
                 cards[selectedIdx].classList.add('correct');
                 activeDrill.score += 10;
-                activeDrill.correctCount++;
-                showRationale("Correct Emergency Protocol Executed", q.explanation, true);
+                showDrillFeedback(true, q.explanation);
             } else {
                 if (selectedIdx >= 0) cards[selectedIdx].classList.add('incorrect');
-                // Highlight correct
                 q.options.forEach((opt, idx) => {
                     if (opt.correct) cards[idx].classList.add('correct');
                 });
-                showRationale("Hazardous Action Selected", q.explanation, false);
+                showDrillFeedback(false, q.explanation);
             }
 
-            document.getElementById('hudScore').textContent = `Session: ${activeDrill.score} pts`;
-            document.getElementById('btnNextAction').classList.add('show');
+            document.getElementById('btnNextDrillQuestion').classList.add('show');
         }
 
-        // Timer
-        function startTimer(seconds) {
-            activeDrill.timeLeft = seconds;
-            updateTimerDisplay();
+        function showDrillFeedback(isCorrect, text) {
+            const card = document.getElementById('activeDrillRationale');
+            const title = document.getElementById('rationaleTitle');
+            const body = document.getElementById('rationaleBody');
+
+            title.textContent = isCorrect ? "✅ Verified Life-Safety Protocol" : "❌ Action Requires Caution";
+            body.innerHTML = text;
+
+            card.className = 'rationale-card-light show ' + (isCorrect ? 'correct' : 'incorrect');
+        }
+
+        function startDrillTimer(secs) {
+            activeDrill.timeLeft = secs;
+            document.getElementById('activeDrillTimerText').textContent = `⏱️ ${activeDrill.timeLeft}s`;
 
             activeDrill.timer = setInterval(() => {
                 activeDrill.timeLeft--;
-                updateTimerDisplay();
+                document.getElementById('activeDrillTimerText').textContent = `⏱️ ${activeDrill.timeLeft}s`;
 
                 if (activeDrill.timeLeft <= 0) {
                     clearInterval(activeDrill.timer);
-                    handleTimeExpiry();
+                    timeExpired();
                 }
             }, 1000);
         }
 
-        function updateTimerDisplay() {
-            const el = document.getElementById('hudTimer');
-            el.textContent = `⏱️ ${activeDrill.timeLeft}s`;
-            if (activeDrill.timeLeft <= 5) {
-                el.style.background = 'rgba(239, 68, 68, 0.3)';
-            } else {
-                el.style.background = 'var(--emergency-red-bg)';
-            }
-        }
-
-        function handleTimeExpiry() {
+        function timeExpired() {
             if (activeDrill.answered) return;
             activeDrill.answered = true;
 
             const q = activeDrill.questions[activeDrill.index];
-
-            if (activeDrill.type === 'quiz') {
-                const buttons = document.querySelectorAll('#optsList .option-button');
-                buttons.forEach(b => b.disabled = true);
-                if (buttons[q.answer]) buttons[q.answer].classList.add('correct');
-                showRationale("Time Expired - Protocol Not Executed", q.explanation, false);
-            } else if (activeDrill.type === 'scramble') {
-                const inp = document.getElementById('scrambleInput');
-                if (inp) inp.disabled = true;
-                showRationale("Time Expired", `Correct Emergency Term: <strong>${q.word}</strong>. ${q.hint}`, false);
-            } else if (activeDrill.type === 'picture') {
-                const cards = document.querySelectorAll('#scenarioOpts .scenario-opt-card');
-                cards.forEach(c => c.disabled = true);
-                q.options.forEach((opt, idx) => {
-                    if (opt.correct) cards[idx].classList.add('correct');
-                });
-                showRationale("Time Expired - Delayed Decision in Emergency", q.explanation, false);
-            }
-
-            document.getElementById('btnNextAction').classList.add('show');
+            showDrillFeedback(false, "Time expired! " + (q.explanation || q.hint || ""));
+            document.getElementById('btnNextDrillQuestion').classList.add('show');
         }
 
-        function showRationale(title, text, isCorrect) {
-            const box = document.getElementById('rationaleBox');
-            const titleEl = document.getElementById('rationaleTitle');
-            const textEl = document.getElementById('rationaleText');
-
-            titleEl.textContent = title;
-            textEl.innerHTML = text;
-
-            box.className = 'rationale-card show ' + (isCorrect ? 'correct' : 'incorrect');
-        }
-
-        function proceedToNextQuestion() {
+        function nextDrillStep() {
             activeDrill.index++;
             if (activeDrill.index < activeDrill.questions.length) {
-                loadQuestion();
+                renderCurrentDrillStep();
             } else {
-                finishDrill();
+                finishDrillSession();
             }
         }
 
-        // Complete Drill
-        async function finishDrill() {
+        // Finish Drill & Save to Hibernate
+        async function finishDrillSession() {
             clearInterval(activeDrill.timer);
-
             const earned = activeDrill.score;
-            const totalQ = activeDrill.questions.length;
-            const accuracy = Math.round((activeDrill.correctCount / totalQ) * 100);
 
-            // Update user locally
-            if (activeDrill.type === 'quiz') {
-                currentUser.quizScore = (currentUser.quizScore || 0) + earned;
-            } else if (activeDrill.type === 'scramble') {
-                currentUser.scrambleScore = (currentUser.scrambleScore || 0) + earned;
-            } else if (activeDrill.type === 'picture') {
-                currentUser.pictureScore = (currentUser.pictureScore || 0) + earned;
-            }
-            currentUser.totalScore = (currentUser.quizScore || 0) + (currentUser.scrambleScore || 0) + (currentUser.pictureScore || 0);
+            // Update user state
+            currentUser.totalScore = (currentUser.totalScore || 0) + earned;
             currentUser.gamesPlayed = (currentUser.gamesPlayed || 0) + 1;
-
             sessionStorage.setItem('user', JSON.stringify(currentUser));
-            updateDashboardUI();
 
-            // Persist to backend servlet with Hibernate ORM
-            saveScoreToBackend(activeDrill.type, earned);
+            updateFitnessDashboard();
 
-            // Display Debrief
-            let statusText = "Certified Preparedness Standard Achieved";
-            let statusColor = "var(--safe-green)";
-            if (accuracy < 60) {
-                statusText = "Readiness Criteria Requires Reinforcement";
-                statusColor = "var(--emergency-red)";
-            }
-
-            const container = document.getElementById('drillDynamicContent');
-            document.getElementById('rationaleBox').className = 'rationale-card';
-            document.getElementById('btnNextAction').className = 'btn-next-action';
-
-            container.innerHTML = `
-                <div class="debrief-card">
-                    <div class="debrief-status" style="color: ${statusColor};">${statusText}</div>
-                    <h3 class="debrief-title">Drill Debrief Completed</h3>
-                    <p style="font-size: 14px; color: var(--text-secondary);">
-                        Assessment synchronized with SATARK Disaster Response Repository.
-                    </p>
-
-                    <div class="debrief-score-box">
-                        <div>
-                            <div class="debrief-metric-num">+${earned}</div>
-                            <div class="debrief-metric-label">Points Added</div>
-                        </div>
-                        <div>
-                            <div class="debrief-metric-num">${accuracy}%</div>
-                            <div class="debrief-metric-label">Protocol Accuracy</div>
-                        </div>
-                        <div>
-                            <div class="debrief-metric-num">${currentUser.totalScore}</div>
-                            <div class="debrief-metric-label">Cumulative Index</div>
-                        </div>
-                    </div>
-
-                    <div class="debrief-actions">
-                        <button class="btn-debrief-primary" onclick="abortDrill()">Return to Console</button>
-                        <button class="btn-debrief-secondary" onclick="startDrill('${activeDrill.type}')">Retake Drill</button>
-                    </div>
-                </div>
-            `;
-        }
-
-        async function saveScoreToBackend(drillType, points) {
+            // Persist to Hibernate backend
             try {
                 const formData = new URLSearchParams();
                 formData.append('action', 'updateScore');
                 formData.append('username', currentUser.username);
-                formData.append('gameType', drillType);
-                formData.append('score', points.toString());
+                formData.append('gameType', activeDrill.type);
+                formData.append('score', earned.toString());
 
                 const res = await fetch('game', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData.toString()
                 });
-
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.status === 'success' && data.user) {
-                        currentUser = data.user;
-                        sessionStorage.setItem('user', JSON.stringify(currentUser));
-                        updateDashboardUI();
-                    }
+                const data = await res.json();
+                if (data.status === 'success' && data.user) {
+                    currentUser = data.user;
+                    sessionStorage.setItem('user', JSON.stringify(currentUser));
+                    updateFitnessDashboard();
                 }
             } catch (err) {
-                console.warn('[SATARK] Score saved in local session; backend communication deferred:', err);
+                console.warn('[Satark] Score updated in local session:', err);
             }
+
+            // Show Celebration Card
+            const container = document.getElementById('activeDrillBody');
+            document.getElementById('activeDrillRationale').className = 'rationale-card-light';
+            document.getElementById('btnNextDrillQuestion').className = 'btn-proceed-light';
+
+            container.innerHTML = `
+                <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: 18px; padding: 36px; text-align: center; box-shadow: var(--card-shadow);">
+                    <div style="font-size: 54px; margin-bottom: 12px;">🎉</div>
+                    <h3 style="font-size: 24px; font-weight: 800; color: var(--text-heading); margin-bottom: 6px;">Drill Completed!</h3>
+                    <p style="font-size: 14px; color: var(--text-body); margin-bottom: 24px;">Your emergency preparedness instincts have leveled up.</p>
+
+                    <div style="background: #f8fafc; border: 1px solid var(--border-color); border-radius: 14px; padding: 18px; display: flex; justify-content: space-around; max-width: 440px; margin: 0 auto 24px;">
+                        <div>
+                            <div style="font-size: 26px; font-weight: 800; color: var(--accent-green); font-family: 'JetBrains Mono', monospace;">+${earned}</div>
+                            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Points Earned</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 26px; font-weight: 800; color: var(--primary-blue); font-family: 'JetBrains Mono', monospace;">${currentUser.totalScore}</div>
+                            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Total Score</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; justify-content: center;">
+                        <button class="btn-start-drill" style="max-width: 180px; margin: 0;" onclick="switchNav('dashboard')">Back to Dashboard</button>
+                        <button class="btn-start-drill" style="max-width: 180px; margin: 0; background: #f1f5f9; color: var(--text-heading); border: 1px solid var(--border-color);" onclick="launchActiveDrill('${activeDrill.type}')">Retake Drill</button>
+                    </div>
+                </div>
+            `;
             loadLeaderboard();
         }
 
-        // Shuffle helper
-        function shuffleArray(arr) {
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
+        // Leaderboard Fetch
+        async function loadLeaderboard() {
+            try {
+                const res = await fetch('user?action=leaderboard');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.status === 'success' && data.leaderboard && data.leaderboard.length > 0) {
+                        renderLeaderboardTable(data.leaderboard);
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.warn('[Satark] Fallback leaderboard data in use.');
             }
-            return arr;
+
+            const fallback = [
+                { username: "arjun_responder", gamesPlayed: 8, totalScore: 350 },
+                { username: "priya_safety", gamesPlayed: 6, totalScore: 280 },
+                { username: currentUser.username || "Harish", gamesPlayed: currentUser.gamesPlayed || 0, totalScore: currentUser.totalScore || 10 },
+                { username: "kavitha_ndrf", gamesPlayed: 4, totalScore: 190 }
+            ];
+            fallback.sort((a, b) => b.totalScore - a.totalScore);
+            renderLeaderboardTable(fallback);
         }
 
-        // SOS Modal
-        function openSosModal() {
-            document.getElementById('sosModal').classList.add('active');
+        function renderLeaderboardTable(players) {
+            const tbody = document.getElementById('profileLeaderboardTbody');
+            tbody.innerHTML = players.map((p, idx) => `
+                <tr>
+                    <td style="font-weight: 800; color: ${idx === 0 ? '#f59e0b' : 'var(--text-muted)'}; font-family: 'JetBrains Mono', monospace;">#${idx + 1}</td>
+                    <td style="font-weight: 700;">${p.username}</td>
+                    <td>${p.gamesPlayed || 0}</td>
+                    <td style="font-weight: 800; color: var(--primary-blue); font-family: 'JetBrains Mono', monospace;">${p.totalScore || 0} pts</td>
+                    <td><span style="font-size: 11px; font-weight: 700; background: #ecfdf5; color: #059669; padding: 3px 10px; border-radius: 9999px;">Certified</span></td>
+                </tr>
+            `).join('');
         }
 
-        function closeSosModal() {
-            document.getElementById('sosModal').classList.remove('active');
+        // AI Chat Assistant
+        function handleSendChat(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const history = document.getElementById('chatHistory');
+            history.innerHTML += `<div class="chat-msg user">${escapeHtml(msg)}</div>`;
+            input.value = '';
+
+            setTimeout(() => {
+                let reply = "Stay calm! Keep emergency numbers (112, 1078) handy and follow official disaster directives.";
+                const lower = msg.toLowerCase();
+                if (lower.includes("earthquake")) {
+                    reply = "During an earthquake: Drop to hands & knees, take Cover under a sturdy table, and Hold On firmly until shaking stops. Avoid glass windows!";
+                } else if (lower.includes("flood") || lower.includes("water")) {
+                    reply = "In a flood: Turn around, never drive or walk through floodwater. Move immediately to higher elevation.";
+                } else if (lower.includes("kit") || lower.includes("bag")) {
+                    reply = "Pack a 72-hour Go-Bag with 3L water/person/day, ready-to-eat rations, first-aid kit, flashlight, radio, and whistle!";
+                } else if (lower.includes("fire")) {
+                    reply = "In a structural fire: Crawl low under the smoke, use stairs (never elevators!), and feel doors for heat before opening.";
+                }
+                history.innerHTML += `<div class="chat-msg bot">${reply}</div>`;
+                history.scrollTop = history.scrollHeight;
+            }, 400);
         }
 
-        document.getElementById('sosModal').addEventListener('click', function(e) {
-            if (e.target === this) closeSosModal();
-        });
+        function escapeHtml(str) {
+            const d = document.createElement('div');
+            d.textContent = str;
+            return d.innerHTML;
+        }
 
-        // Initialize on load
-        window.addEventListener('DOMContentLoaded', initSession);
+        window.addEventListener('DOMContentLoaded', initApp);
     </script>
 </body>
 
