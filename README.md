@@ -100,8 +100,8 @@ Ensure your PostgreSQL credentials in `src/hibernate.cfg.xml` and `src/com/satar
 
 ```xml
 <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/disaster_safety</property>
-<property name="hibernate.connection.username">postgres</property>
-<property name="hibernate.connection.password">harini10</property>
+<property name="hibernate.connection.username">USERNAME OF UR DATABASE</property>
+<property name="hibernate.connection.password">PASSWORD OF UR DATABASE</property>
 ```
 
 ### Step 3: Compile the Project
